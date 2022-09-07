@@ -21,5 +21,6 @@ const athleteSchema = new Schema({
   },
   madeWeight: {
     type: Boolean,
+    default: false,
   },
 });
