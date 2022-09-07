@@ -1,5 +1,6 @@
-const { application } = require("express");
+const { response } = require("express");
 const express = require("express");
+const Athlete = require("../models/athleteModel")
 const router = express.Router();
 
 //get all athletes
@@ -13,8 +14,14 @@ router.get("/:id", (req, res) => {
 });
 
 //add new athlete data
-router.post("/", (req, res) => {
-  res.json({ mssg: "add a new athlete" });
+router.post("/", async (req, res) => {
+  const {forename, surname, beltClass, weightClass, madeWeight} = req.body;
+  try {
+    const athlete = await Athlete.create({forename, surname, beltClass, weightClass, madeWeight});
+    response.status(200).json(athlete);
+  } catch (error) {
+    res.status(400).json({error: error.message});
+  }
 });
 
 //update athlete data

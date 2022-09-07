@@ -27,3 +27,5 @@ const athleteSchema = new Schema(
   },
   { timestamps: true }
 );
+
+module.exports = mongoose.model('Athlete', athleteSchema)
