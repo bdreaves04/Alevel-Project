@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const athleteRoutes = require("./routes/athletes");
+const athleteRoutes = require("./routes/Athletes");
 
 //creates express app
 const app = express();
