@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
   const {forename, surname, beltClass, weightClass, madeWeight} = req.body;
   try {
     const athlete = await Athlete.create({forename, surname, beltClass, weightClass, madeWeight});
-    response.status(200).json(athlete);
+    res.status(200).json(athlete);
   } catch (error) {
     res.status(400).json({error: error.message});
   }
