@@ -4,8 +4,13 @@ const Athlete = require("../models/athleteModel")
 const router = express.Router();
 
 //get all athletes
-router.get("/", (req, res) => {
-  res.json({ mssg: "get all athletes" });
+router.get("/", async (req, res) => {
+ try {
+  const athletes = await Athlete.find();
+  res.status(200).json({athletes});
+ } catch (error) {
+  res.status(400).json({error: error.message});
+ }
 });
 
 //Get single athlete
@@ -25,14 +30,8 @@ router.post("/", async (req, res) => {
 });
 
 //update athlete data
-router.patch("/:id", async (req, res) => {
-  const {forename, surname, beltClass, weightClass, madeWeight} = req.body;
-  try {
-    const athlete = await Athlete.findOneAndUpdate({forename, surname, beltClass, weightClass, madeWeight});
-    res.status(200).json({athlete});
-  } catch (error) {
-    res.status(400).json({error: error.message});
-  }
+router.patch("/:id", (req, res) => {
+  res.json({mssg: "update athlete by id"});
 });
 
 module.exports = router;
