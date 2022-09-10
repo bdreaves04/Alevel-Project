@@ -25,8 +25,14 @@ router.post("/", async (req, res) => {
 });
 
 //update athlete data
-router.patch("/:id", (req, res) => {
-  res.json({ mssg: "update athlete data by id" });
+router.patch("/:id", async (req, res) => {
+  const {forename, surname, beltClass, weightClass, madeWeight} = req.body;
+  try {
+    const athlete = await Athlete.findOneAndUpdate({forename, surname, beltClass, weightClass, madeWeight});
+    res.status(200).json({athlete});
+  } catch (error) {
+    res.status(400).json({error: error.message});
+  }
 });
 
 module.exports = router;
