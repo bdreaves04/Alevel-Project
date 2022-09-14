@@ -1,4 +1,5 @@
 const Athlete = require("../models/athleteModel");
+const mongoose = require('mongoose');
 
 //create new athlete
 
@@ -28,6 +29,11 @@ const getAthletes = async (req,res) => {
 //et singular atlete by id
 const getAthleteFromId = async (req,res) => {
     const { id } = req.params;
+    
+    if(!mongoose.Types.ObjectID.isValid){
+        return res.status(404).json({error: "no such athlete"})
+    }
+
     const athlete = athlete.findById(id);
 
     if(!athlete) {
