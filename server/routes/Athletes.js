@@ -1,17 +1,10 @@
-const { response } = require("express");
 const express = require("express");
 const Athlete = require("../models/athleteModel")
 const router = express.Router();
+const { createAthlete, getAthletes } = require('../controllers/athletesController')
 
 //get all athletes
-router.get("/", async (req, res) => {
- try {
-  const athletes = await Athlete.find();
-  res.status(200).json({athletes});
- } catch (error) {
-  res.status(400).json({error: error.message});
- }
-});
+router.get("/", getAthletes);
 
 //Get single athlete
 router.get("/:id", (req, res) => {
@@ -19,15 +12,7 @@ router.get("/:id", (req, res) => {
 });
 
 //add new athlete data
-router.post("/", async (req, res) => {
-  const {forename, surname, beltClass, weightClass, madeWeight} = req.body;
-  try {
-    const athlete = await Athlete.create({forename, surname, beltClass, weightClass, madeWeight});
-    res.status(200).json(athlete);
-  } catch (error) {
-    res.status(400).json({error: error.message});
-  }
-});
+router.post("/", createAthlete);
 
 //update athlete data
 router.patch("/:id", (req, res) => {
