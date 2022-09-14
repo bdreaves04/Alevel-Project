@@ -25,9 +25,22 @@ const getAthletes = async (req,res) => {
     res.status(200).json(athletes);
 }
 
+//et singular atlete by id
+const getAthleteFromId = async (req,res) => {
+    const { id } = req.params;
+    const athlete = athlete.findById(id);
+
+    if(!athlete) {
+        return res.status(404).json({error : "no such athlete"});
+    }
+
+    res.status(200).json(athlete);
+}
+
 //exporting functions
 
 module.exports = {
     createAthlete,
-    getAthletes
+    getAthletes,
+    getAthleteFromId
 }

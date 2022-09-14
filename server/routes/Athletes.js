@@ -1,15 +1,13 @@
 const express = require("express");
 const Athlete = require("../models/athleteModel")
 const router = express.Router();
-const { createAthlete, getAthletes } = require('../controllers/athletesController')
+const { createAthlete, getAthletes, getAthleteFromId } = require('../controllers/athletesController')
 
 //get all athletes
 router.get("/", getAthletes);
 
 //Get single athlete
-router.get("/:id", (req, res) => {
-  res.json({ mssg: "get single athlete data" });
-});
+router.get("/:id", getAthleteFromId);
 
 //add new athlete data
 router.post("/", createAthlete);
