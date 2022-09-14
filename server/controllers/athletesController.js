@@ -29,8 +29,8 @@ const getAthletes = async (req,res) => {
 //et singular atlete by id
 const getAthleteFromId = async (req,res) => {
     const { id } = req.params;
-    
-    if(!mongoose.Types.ObjectID.isValid){
+
+    if(!mongoose.Types.ObjectID.isValid(id)){
         return res.status(404).json({error: "no such athlete"})
     }
 
