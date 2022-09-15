@@ -15,7 +15,7 @@ router.get("/", getAthletes);
 router.get("/surname", getAthleteBySurname);
 
 //Get single athlete by id
-router.get("/:id", getAthleteFromId);
+router.get("/id/:id", getAthleteFromId);
 
 //add new athlete data
 router.post("/", createAthlete);
