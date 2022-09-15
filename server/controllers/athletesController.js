@@ -1,5 +1,5 @@
 const Athlete = require("../models/athleteModel");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //create new athlete
 
@@ -21,41 +21,46 @@ const createAthlete = async (req, res) => {
 };
 
 //get all athletes
-const getAthletes = async (req,res) => {
-    const athletes = await Athlete.find( {} ).sort({surname: -1});
-    res.status(200).json(athletes);
-}
+const getAthletes = async (req, res) => {
+  const athletes = await Athlete.find({}).sort({ surname: -1 });
+  res.status(200).json(athletes);
+};
 
 //et singular atlete by id
-const getAthleteFromId = async (req,res) => {
-    const { id } = req.params;
+const getAthleteFromId = async (req, res) => {
+  const { id } = req.params;
 
-    if(!mongoose.Types.ObjectID.isValid(id)){
-        return res.status(404).json({error: "no such athlete"})
-    }
+  if (!mongoose.Types.ObjectID.isValid(id)) {
+    return res.status(404).json({ error: "no such athlete" });
+  }
 
-    const athlete = Athlete.findById(id);
+  const athlete = await Athlete.findById({ id });
 
-    if(!athlete) {
-        return res.status(404).json({error : "no such athlete"});
-    }
+  if (!athlete) {
+    return res.status(404).json({ error: "no such athlete" });
+  }
 
-    res.status(200).json(athlete);
+  res.status(200).json(athlete);
 };
 
 //get athlete by surname
-const getAthleteBySurname = async (req,res) => {
-  const { surname } = req.params;
+const getAthleteBySurname = async (req, res) => {
+  const { surname } = req.body;
 
-  const athlete = Athlete.find({surname}).sort({forename: 1});
+  const athlete = await Athlete.find({ surname }).sort({ forename: 1 });
+
+  if (!athlete) {
+    return res.status(404).json({ error: "no such athlete" });
+  }
+
   res.status(200).json(athlete);
 };
 
 //exporting functions
 
 module.exports = {
-    createAthlete,
-    getAthletes,
-    getAthleteFromId,
-    getAthleteBySurname
-}
+  createAthlete,
+  getAthletes,
+  getAthleteFromId,
+  getAthleteBySurname,
+};

@@ -11,11 +11,11 @@ const {
 //get all athletes
 router.get("/", getAthletes);
 
+//get athlete from surname
+router.get("/surname", getAthleteBySurname);
+
 //Get single athlete by id
 router.get("/:id", getAthleteFromId);
-
-//get athlete from surname
-router.get("/:surname", getAthleteBySurname);
 
 //add new athlete data
 router.post("/", createAthlete);
