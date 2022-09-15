@@ -34,19 +34,28 @@ const getAthleteFromId = async (req,res) => {
         return res.status(404).json({error: "no such athlete"})
     }
 
-    const athlete = athlete.findById(id);
+    const athlete = Athlete.findById(id);
 
     if(!athlete) {
         return res.status(404).json({error : "no such athlete"});
     }
 
     res.status(200).json(athlete);
-}
+};
+
+//get athlete by surname
+const getAthleteBySurname = async (req,res) => {
+  const { surname } = req.params;
+
+  const athlete = Athlete.find({surname}).sort({forename: 1});
+  res.status(200).json(athlete);
+};
 
 //exporting functions
 
 module.exports = {
     createAthlete,
     getAthletes,
-    getAthleteFromId
+    getAthleteFromId,
+    getAthleteBySurname
 }
