@@ -59,13 +59,7 @@ const getAthleteBySurname = async (req, res) => {
 //update athlete data by id
 const updateAthlete = async (req,res) => {
   try {
-    const athlete = await Athlete.patch({
-      forename,
-      surname,
-      beltClass,
-      weightClass,
-      madeWeight,
-    });
+    const athlete = await Athlete.findByIdAndUpdate(req.id,{$set: req.body},{new:true});
     res.status(200).json(athlete);
   } catch (error) {
     res.status(404).json({error: error.message});
