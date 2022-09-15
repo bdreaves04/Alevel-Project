@@ -22,6 +22,6 @@ router.get("/getbyid/:id", getAthleteFromId);
 router.post("/", createAthlete);
 
 //update athlete data
-router.patch("/:id", updateAthlete);
+router.put("/:id", updateAthlete);
 
 module.exports = router;

@@ -26,7 +26,7 @@ const getAthletes = async (req, res) => {
   res.status(200).json(athletes);
 };
 
-//et singular atlete by id
+//get singular atlete by id
 const getAthleteFromId = async (req, res) => {
   const { id } = req.params;
 
@@ -59,7 +59,8 @@ const getAthleteBySurname = async (req, res) => {
 //update athlete data by id
 const updateAthlete = async (req,res) => {
   try {
-    const athlete = await Athlete.findByIdAndUpdate(req.id,{$set: req.body},{new:true});
+    console.log(req.body)
+    const athlete = await Athlete.findByIdAndUpdate(req.params.id,{$set: req.body},{new:true});
     res.status(200).json(athlete);
   } catch (error) {
     res.status(404).json({error: error.message});
