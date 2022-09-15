@@ -30,11 +30,11 @@ const getAthletes = async (req, res) => {
 const getAthleteFromId = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectID.isValid(id)) {
+  if (!mongoose.Types.ObjectID.isValid({id})) {
     return res.status(404).json({ error: "no such athlete" });
   }
 
-  const athlete = await Athlete.findById({ id });
+  const athlete = await Athlete.findById({id});
 
   if (!athlete) {
     return res.status(404).json({ error: "no such athlete" });
@@ -56,6 +56,23 @@ const getAthleteBySurname = async (req, res) => {
   res.status(200).json(athlete);
 };
 
+//update athlete data by id
+const updateAthlete = async (req,res) => {
+  try {
+    const athlete = await Athlete.patch({
+      forename,
+      surname,
+      beltClass,
+      weightClass,
+      madeWeight,
+    });
+    res.status(200).json(athlete);
+  } catch (error) {
+    res.status(404).json({error: error.message});
+  }
+
+}
+
 //exporting functions
 
 module.exports = {
@@ -63,4 +80,5 @@ module.exports = {
   getAthletes,
   getAthleteFromId,
   getAthleteBySurname,
+  updateAthlete
 };

@@ -6,6 +6,7 @@ const {
   getAthletes,
   getAthleteFromId,
   getAthleteBySurname,
+  updateAthlete,
 } = require("../controllers/athletesController");
 
 //get all athletes
@@ -15,14 +16,12 @@ router.get("/", getAthletes);
 router.get("/surname", getAthleteBySurname);
 
 //Get single athlete by id
-router.get("/id/:id", getAthleteFromId);
+router.get("/getbyid/:id", getAthleteFromId);
 
 //add new athlete data
 router.post("/", createAthlete);
 
 //update athlete data
-router.patch("/:id", (req, res) => {
-  res.json({ mssg: "update athlete by id" });
-});
+router.patch("/:id", updateAthlete);
 
 module.exports = router;
