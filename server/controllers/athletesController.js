@@ -30,11 +30,11 @@ const getAthletes = async (req, res) => {
 const getAthleteFromId = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectID.isValid({id})) {
-    return res.status(404).json({ error: "no such athlete" });
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(403).json({ error: "no such athlete" });
   }
 
-  const athlete = await Athlete.findById({id});
+  const athlete = await Athlete.findOne({ _id: id });
 
   if (!athlete) {
     return res.status(404).json({ error: "no such athlete" });
@@ -57,16 +57,33 @@ const getAthleteBySurname = async (req, res) => {
 };
 
 //update athlete data by id
-const updateAthlete = async (req,res) => {
+const updateAthlete = async (req, res) => {
   try {
-    console.log(req.body)
-    const athlete = await Athlete.findByIdAndUpdate(req.params.id,{$set: req.body},{new:true});
+    console.log(req.body);
+    const athlete = await Athlete.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
     res.status(200).json(athlete);
   } catch (error) {
-    res.status(404).json({error: error.message});
+    res.status(404).json({ error: error.message });
   }
+};
 
-}
+//button to update that athlete has made weight
+const madeWeight = async (req, res) => {
+  try {
+    const athlete = await Athlete.findByIdAndUpdate(
+      req.params.id,
+      { madeWeight: true },
+      { new: true }
+    );
+    res.status(200).json(athlete);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 //exporting functions
 
@@ -75,5 +92,6 @@ module.exports = {
   getAthletes,
   getAthleteFromId,
   getAthleteBySurname,
-  updateAthlete
+  updateAthlete,
+  madeWeight
 };
