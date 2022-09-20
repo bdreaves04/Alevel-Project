@@ -93,5 +93,5 @@ module.exports = {
   getAthleteFromId,
   getAthleteBySurname,
   updateAthlete,
-  madeWeight
+  madeWeight,
 };
