@@ -7,7 +7,14 @@ class Navbar extends Component {
             <header>
                 <div className="container">
                     <Link to='/'>
-                        <h2>Home</h2>
+                        <div className="navitem">
+                            <h2>Home</h2>
+                        </div>
+                    </Link>
+                    <Link to='/login'>
+                        <div className="navitem">
+                            <h2>Login</h2>
+                        </div>
                     </Link>
                 </div>
             </header>
