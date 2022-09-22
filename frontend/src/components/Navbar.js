@@ -5,7 +5,7 @@ class Navbar extends Component {
     render() {
         return (
             <header>
-                <div className="container">
+                <div className="containerNav">
                     <Link to='/'>
                         <div className="navitem">
                             <h2>Home</h2>

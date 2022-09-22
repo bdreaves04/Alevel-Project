@@ -1,10 +1,10 @@
 header {
-  margin: 4px;
+  padding: 0.2%;
 }
 
-body {
-  margin: 5px;
+.App {
   padding: 2px;
+  background-color: #a0a0a0;
 }
 
 
@@ -13,14 +13,14 @@ header a {
   text-decoration: none;
 }
 
-header .container {
-  background-color: #f1f1f1;
+header .containerNav {
+  background-color: #fff;
   border-style: solid;
   border-color: #444;
   border-radius: 7px;
   display: flex;
-  padding: 5px 10px;
   justify-content: left;
+  width: 100%;
 }
 
 .navitem{
@@ -30,4 +30,10 @@ header .container {
   border-radius: 10px;
   padding: 2px 20px;
   margin: 5px;
+}
+
+.card{
+  margin: 0.2%;
+  min-height: 90.3vh;
+  border-color: #444;
 }
