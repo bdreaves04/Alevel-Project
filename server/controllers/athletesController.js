@@ -2,7 +2,6 @@ const Athlete = require("../models/athleteModel");
 const mongoose = require("mongoose");
 
 //create new athlete
-
 const createAthlete = async (req, res) => {
   const { forename, surname, beltClass, weightClass, madeWeight } = req.body;
   //add doc to database
