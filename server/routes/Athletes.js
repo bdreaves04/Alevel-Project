@@ -1,5 +1,4 @@
 const express = require("express");
-const Athlete = require("../models/athleteModel");
 const router = express.Router();
 const {
   createAthlete,
