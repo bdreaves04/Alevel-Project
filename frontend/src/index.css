@@ -37,3 +37,12 @@ header .containerNav {
   min-height: 90.3vh;
   border-color: #444;
 }
+
+.logoNavItem{
+  background-color: #fff;
+  padding: 0px 10px;  
+}
+
+img[alt="logo"]{
+  width: 64px;
+}
