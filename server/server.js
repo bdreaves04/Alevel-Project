@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use((req, res, next) => {
-  console.log(req.path, req.method, '\n', req.body, '\n', res);
+  console.log(req.path, req.method, '\n', req.body);
   next();
 });
 
