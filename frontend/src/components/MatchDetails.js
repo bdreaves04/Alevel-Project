@@ -5,26 +5,19 @@ const MatchDetails = () => {
   const [matches, setMatches] = useState(null);
 
   useEffect(() => {
-    const fetchMatches = async () => {
-      const response = await fetch("/api/matches");
-      const json = await response.json();
-
-      if (response.ok) {
-        setMatches(json);
-      }
-    };
-
-    fetchMatches();
-  }, []);
+    fetch("/api/matches")
+      .then((response) => response.json())
+      .then((data) => {
+        setMatches(data);
+      });
+  });
 
   return (
     <div>
       {matches &&
         matches.map((matches) => (
-          <>
-            <div key={matches.matchNo}>
-              <h3>{matches.matchNo}</h3>
-            </div>
+          <div key={matches.matchNo}>
+            <h3>{matches.matchNo}</h3>
             <h5>Blue: </h5>
             <AthleteDetails
               key={matches.athleteBlueId}
@@ -35,7 +28,7 @@ const MatchDetails = () => {
               key={matches.athleteRedId}
               athleteId={matches.athleteRedId}
             />
-          </>
+          </div>
         ))}
     </div>
   );

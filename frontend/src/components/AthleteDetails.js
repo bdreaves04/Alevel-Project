@@ -4,15 +4,11 @@ const AthleteDetails = ({ athleteId }) => {
   const [athlete, setAthlete] = useState(null);
 
   useEffect(() => {
-    const fetchAthlete = async () => {
-      const response = await fetch(`/api/athletes/getbyid/${athleteId}`);
-      const json = await response.json();
-
-      if (response.ok) {
-        setAthlete(json);
-      }
-    };
-    fetchAthlete();
+    fetch(`/api/athletes/getbyid/${athleteId}`)
+      .then((response) => response.json())
+      .then((Athlete) => {
+        setAthlete(Athlete);
+      });
   }, [athleteId]);
 
   return (
