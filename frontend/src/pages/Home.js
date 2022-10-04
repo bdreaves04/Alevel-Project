@@ -9,11 +9,9 @@ const Home = () => {
       <Card>
         <Card.Body>
           <Card.Title>Home Page</Card.Title>
-          <Card.Text>
-            <div className="matches">
+            <span className="matches">
               <MatchDetails />
-            </div>
-          </Card.Text>
+            </span>
         </Card.Body>
       </Card>
     </div>

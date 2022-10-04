@@ -9,8 +9,9 @@ const MatchDetails = () => {
       .then((response) => response.json())
       .then((data) => {
         setMatches(data);
+        console.log(data)
       });
-  });
+  },[]);
 
   return (
     <div>
@@ -18,16 +19,10 @@ const MatchDetails = () => {
         matches.map((matches) => (
           <div key={matches.matchNo}>
             <h3>{matches.matchNo}</h3>
-            <h5>Blue: </h5>
-            <AthleteDetails
-              key={matches.athleteBlueId}
-              athleteId={matches.athleteBlueId}
-            />
-            <h5>Red:</h5>
-            <AthleteDetails
-              key={matches.athleteRedId}
-              athleteId={matches.athleteRedId}
-            />
+            <h6>Blue: </h6>
+            <AthleteDetails athleteId={matches.athleteBlueId}/>
+            <h6>Red:</h6>
+            <AthleteDetails athleteId={matches.athleteRedId}/>
           </div>
         ))}
     </div>

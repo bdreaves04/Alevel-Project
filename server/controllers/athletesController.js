@@ -28,9 +28,9 @@ const getAthletes = async (req, res) => {
 //get singular atlete by id
 const getAthleteFromId = async (req, res) => {
   const { id } = req.params;
-
+  console.log(id)
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(403).json({ error: "no such athlete" });
+    return res.status(403).json({ error: "no  such athlete" });
   }
 
   const athlete = await Athlete.findOne({ _id: id });
