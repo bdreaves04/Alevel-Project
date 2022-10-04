@@ -1,4 +1,3 @@
-const MatchModel = require("../models/matchModel");
 const mongoose = require("mongoose");
 const matchModel = require("../models/matchModel");
 
@@ -7,7 +6,7 @@ const createMatch = async (req, res) => {
   const { matchNo, athleteRedId, athleteBlueId } = req.body;
   //add doc to db
   try {
-    const match = await MatchModel.create({
+    const match = await matchModel.create({
       matchNo,
       athleteBlueId,
       athleteRedId,
@@ -20,7 +19,7 @@ const createMatch = async (req, res) => {
 
 //get all matches
 const getMatches = async (req, res) => {
-  const matches = await MatchModel.find({}).sort({ matchNo: 1 });
+  const matches = await matchModel.find({}).sort({ matchNo: 1 });
   res.status(200).json(matches);
 };
 
@@ -37,7 +36,7 @@ const getMatchByMatchNo = async (req, res) => {
 //get macthes by ring
 const getMatchByRing = async (req, res) => {
   const { ringNo } = req.body;
-  const matches = matchModel.find({ ringNo }).sort({ matchNo: 1 });
+  const matches = await matchModel.find({ ringNo }).sort({ matchNo: 1 });
   if (!matches) {
     return res.status(404).json({ error: "no matches found" });
   }
@@ -49,7 +48,7 @@ const updateMatch = async (req, res) => {
   try {
     console.log(req.body);
     const { matchNo } = req.body;
-    const match = await MatchModel.findByIdAndUpdate(
+    const match = await matchModel.findByIdAndUpdate(
       matchNo,
       { $set: req.body },
       { new: true }

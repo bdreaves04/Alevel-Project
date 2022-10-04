@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', getMatches);
 
 //get matches by ring
-router.get('/ring/:id', getMatchByRing);
+router.post('/ring/', getMatchByRing);
 
 //get match by matchNo
 router.get('/', getMatchByMatchNo);
@@ -14,7 +14,7 @@ router.get('/', getMatchByMatchNo);
 //create a match
 router.post('/', createMatch);
 
-//update a match by Id
-router.put(':id', updateMatch);
+//update a match by matchNo
+router.put('/', updateMatch);
 
 module.exports = router;
