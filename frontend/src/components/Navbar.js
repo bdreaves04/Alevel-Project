@@ -18,6 +18,11 @@ class Navbar extends Component {
                             <h2>Login</h2>
                         </div>
                     </Link>
+                    <Link to='/nextMatches'>
+                        <div className="navitem">
+                            <h2>Next Matches</h2>
+                        </div>
+                    </Link>
                 </div>
             </header>
         );

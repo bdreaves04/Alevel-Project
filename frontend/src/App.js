@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import NextMatches from "./pages/NextMatches";
 
 function App() {
   return (  
@@ -20,6 +21,10 @@ function App() {
               <Route 
                 path='/login'
                 element = {<Login />}
+              />
+              <Route
+                path='/nextMatches'
+                element ={<NextMatches />}
               />
             </Routes>
           </div>
