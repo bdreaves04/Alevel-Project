@@ -9,7 +9,7 @@ router.get('/', getMatches);
 router.post('/ring/', getMatchByRing);
 
 //get match by matchNo
-router.get('/', getMatchByMatchNo);
+router.post('/getMatchFromNo/', getMatchByMatchNo);
 
 //create a match
 router.post('/', createMatch);

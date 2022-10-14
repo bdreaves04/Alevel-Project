@@ -4,19 +4,21 @@ const express = require("express");
 const mongoose = require("mongoose");
 const athleteRoutes = require("./routes/Athlete");
 const matchRoutes = require("./routes/Match");
+const userRoutes = require("./routes/User");
 
 //creates express app
 const app = express();
 
 app.use(express.json());
 app.use((req, res, next) => {
-  console.log(req.path, req.method, '\n', req.body);
+  // console.log(req.path, req.method, '\n', req.body);
   next();
 });
 
 //routes
 app.use("/api/athletes", athleteRoutes);
 app.use("/api/matches", matchRoutes);
+app.use("/api/user", userRoutes);
 
 //connect to db
 mongoose

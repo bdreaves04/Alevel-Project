@@ -13,7 +13,7 @@ const {
 router.get("/", getAthletes);
 
 //get athlete from surname
-router.get("/surname", getAthleteBySurname);
+router.post("/surname", getAthleteBySurname);
 
 //Get single athlete by id
 router.get("/getbyid/:id", getAthleteFromId);
