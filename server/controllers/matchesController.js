@@ -3,13 +3,14 @@ const matchModel = require("../models/matchModel");
 
 //create a match
 const createMatch = async (req, res) => {
-  const { matchNo, athleteRedId, athleteBlueId } = req.body;
+  const { matchNo, athleteRedId, athleteBlueId, ringNo } = req.body;
   //add doc to db
   try {
     const match = await matchModel.create({
       matchNo,
       athleteBlueId,
       athleteRedId,
+      ringNo
     });
     res.status(200).json(match);
   } catch (error) {
@@ -48,7 +49,7 @@ const updateMatch = async (req, res) => {
   try {
     console.log(req.body);
     const { matchNo } = req.body;
-    const match = await matchModel.findByIdAndUpdate(
+    const match = await matchModel.findOneAndUpdate(
       matchNo,
       { $set: req.body },
       { new: true }
