@@ -3,16 +3,9 @@ const mongoose = require("mongoose");
 
 //create new athlete
 const createAthlete = async (req, res) => {
-  const { forename, surname, beltClass, weightClass, madeWeight } = req.body;
   //add doc to database
   try {
-    const athlete = await Athlete.create({
-      forename,
-      surname,
-      beltClass,
-      weightClass,
-      madeWeight,
-    });
+    const athlete = await Athlete.create(req.body);
     res.status(200).json(athlete);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -28,7 +21,7 @@ const getAthletes = async (req, res) => {
 //get singular atlete by id
 const getAthleteFromId = async (req, res) => {
   const { id } = req.params;
-  console.log(id)
+  //console.log(id)
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(403).json({ error: "no  such athlete" });
   }
@@ -58,7 +51,6 @@ const getAthleteBySurname = async (req, res) => {
 //update athlete data by id
 const updateAthlete = async (req, res) => {
   try {
-    console.log(req.body);
     const athlete = await Athlete.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
