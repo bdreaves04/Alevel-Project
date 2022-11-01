@@ -4,16 +4,9 @@ const mongoose = require("mongoose");
 //create new athlete
 
 const createAthlete = async (req, res) => {
-  const { forename, surname, beltClass, weightClass, madeWeight } = req.body;
   //add doc to database
   try {
-    const athlete = await Athlete.create({
-      forename,
-      surname,
-      beltClass,
-      weightClass,
-      madeWeight,
-    });
+    const athlete = await Athlete.create(req.body);
     res.status(200).json(athlete);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -59,7 +52,6 @@ const getAthleteBySurname = async (req, res) => {
 //update athlete data by id
 const updateAthlete = async (req, res) => {
   try {
-    console.log(req.body);
     const athlete = await Athlete.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },

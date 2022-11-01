@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const matchModel = require("../models/matchModel");
 
 //create a match
@@ -29,12 +28,12 @@ const getMatchByMatchNo = async (req, res) => {
   const { matchNo } = req.body;
   const match = await matchModel.findOne({ matchNo });
   if (!match) {
-    return res.status(404).json({ error: "no such athlete" });
+    return res.status(404).json({ error: `no such match with matchNo : ${matchNo}`});
   }
   res.status(200).json(match);
 };
 
-//get macthes by ring
+//get matches by ring
 const getMatchByRing = async (req, res) => {
   const { ringNo } = req.body;
   const matches = await matchModel.find({ ringNo }).sort({ matchNo: 1 });
@@ -47,7 +46,6 @@ const getMatchByRing = async (req, res) => {
 //update match info
 const updateMatch = async (req, res) => {
   try {
-    console.log(req.body);
     const { matchNo } = req.body;
     const match = await matchModel.findOneAndUpdate(
       matchNo,
