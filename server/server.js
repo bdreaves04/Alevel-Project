@@ -2,10 +2,9 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-<<<<<<< HEAD
+
+//routes
 const athleteRoutes = require("./routes/Athletes");
-=======
-const athleteRoutes = require("./routes/Athlete");
 const matchRoutes = require("./routes/Match");
 const userRoutes = require("./routes/User");
 
@@ -16,8 +15,6 @@ app.use(express.json());
 
 //routes
 app.use("/api/athletes", athleteRoutes);
-<<<<<<< HEAD
-=======
 app.use("/api/matches", matchRoutes);
 app.use("/api/user", userRoutes);
 
