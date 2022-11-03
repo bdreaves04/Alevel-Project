@@ -8,6 +8,7 @@ class NextMatches extends Component {
     super(props);
     this.state = {value: "1"};
 
+    //binding scope of handlechange to the whole of NextMatches class
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -16,6 +17,7 @@ class NextMatches extends Component {
   }
   
   render() {
+    document.title='Next Matches'
     return (
       <div>
         <Card>

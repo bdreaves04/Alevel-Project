@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 class Login extends Component {
     render() {
+        document.title='Login'
         return (
             <div className="login">
                 <Card>
