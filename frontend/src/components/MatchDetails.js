@@ -13,7 +13,6 @@ const MatchDetails = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setMatches(data);
-        console.log(data);
       }); 
   }, [props]);
 

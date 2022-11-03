@@ -6,16 +6,21 @@ const AthleteDetails = (props) => {
   useEffect(() => {
     fetch(`/api/athletes/getbyid/${props.athleteId}`).then((res) => {
       const contentType = res.headers.get("content-type");
+
+      //checking if response type is valid
       if (contentType && contentType.indexOf("application/json") !== -1) {
+
         return res.json().then((data) => {
           console.log("found Athlete ", data);
           setAthlete(data);
         });
+
       } else {
         return res.text().then((text) => {
           console.log(text);
         });
       }
+
     });
   }, [props]);
 
