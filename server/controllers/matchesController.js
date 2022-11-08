@@ -47,8 +47,9 @@ const getMatchByRing = async (req, res) => {
 const updateMatch = async (req, res) => {
   try {
     const { matchNo } = req.body;
+    console.log(req.body)
     const match = await matchModel.findOneAndUpdate(
-      matchNo,
+      { matchNo },
       { $set: req.body },
       { new: true }
     );
