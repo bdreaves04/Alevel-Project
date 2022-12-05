@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form'
 
 const NextMatches = () => {
   const [ringNo, setRingNo] = useState('1');
+  document.title = "Next Matches";
   return (
     <div>
         <Card>
