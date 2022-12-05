@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
 class Navbar extends Component {
     render() {
         return (
@@ -13,14 +14,19 @@ class Navbar extends Component {
                             <h2>Home</h2>
                         </div>
                     </Link>
+                    <Link to='/nextMatches'>
+                        <div className="navitem">
+                            <h2>Next Matches</h2>
+                        </div>
+                    </Link>
                     <Link to='/login'>
                         <div className="navitem">
                             <h2>Login</h2>
                         </div>
                     </Link>
-                    <Link to='/nextMatches'>
+                    <Link to='/signup'>
                         <div className="navitem">
-                            <h2>Next Matches</h2>
+                            <h2>Signup</h2>
                         </div>
                     </Link>
                 </div>
