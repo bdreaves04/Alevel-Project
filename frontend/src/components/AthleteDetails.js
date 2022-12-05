@@ -11,7 +11,7 @@ const AthleteDetails = (props) => {
       if (contentType && contentType.indexOf("application/json") !== -1) {
 
         return res.json().then((data) => {
-          console.log("found Athlete ", data);
+          // console.log("found Athlete ", data);
           setAthlete(data);
         });
 
