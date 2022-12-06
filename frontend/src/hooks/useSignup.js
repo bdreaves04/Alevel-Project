@@ -16,15 +16,13 @@ export const useSignup = () => {
             body: JSON.stringify({ username, password }),
         })
             .then((res) => {
-                res.json();
+                return res.json();
             })
             .then((data) => {
-                console.log(data);
-                if (!data.ok) {   //broken here??
+                if (data.error) {
                     setIsLoading(false);
                     setError(data.error);
                 } else {
-                    console.log("in else");
                     localStorage.setItem("user", JSON.stringify(data));
 
                     dispatch({ type: "LOGIN", payload: data });
