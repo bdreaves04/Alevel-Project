@@ -39,7 +39,7 @@ const Navbar = () => {
                 )}
                 {user && (
                     <>
-                        <Button onClick={logout}>
+                        <Button className="navitem" onClick={logout}>
                             Logout
                         </Button>
                     </>
