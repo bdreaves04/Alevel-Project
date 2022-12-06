@@ -1,17 +1,17 @@
-import {useState} from "react";
+import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
 import { Card, Form, Button } from "react-bootstrap";
 
 const Signup = () => {
-    document.title="sign-up";
+    document.title = "sign-up";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const {signup, error, isLoading} = useSignup();
+    const { signup, error, isLoading } = useSignup();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await signup(username, password)
+        await signup(username, password);
     };
     return (
         <div className="Login">
@@ -39,7 +39,7 @@ const Signup = () => {
                         </Form.Group>
                         <br />
                         <Button variant="primary" type="submit">
-                            Submit
+                            {isLoading ? "loading" : "Submit"}
                         </Button>
                         {error && <div className="error">{error}</div>}
                     </Form>

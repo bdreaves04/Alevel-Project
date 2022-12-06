@@ -40,7 +40,7 @@ const Login = () => {
                         </Form.Group>
                         <br />
                         <Button variant="primary" type="submit">
-                            Submit
+                            {isLoading ? "loading": "Submit"}
                         </Button>
                         {error && <div className="error">{error}</div>}
                     </Form>

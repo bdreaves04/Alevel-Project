@@ -15,10 +15,10 @@ export const useLogin = () => {
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ username, password }),
         })
-            .then((res) => res.json())
+            .then((res) =>  {return res.json()})
             .then((data) => {
-                if (!data.ok) {
-                    setIsLoading(false);
+                if (!data.error) {
+                    setIsLoading(false); 
                     setError(data.error);
                 } else {
                     localStorage.setItem("user", JSON.stringify(data));
