@@ -9,18 +9,22 @@ export const useSignup = () => {
     const signup = async (username, password) => {
         setIsLoading(true);
         setError(null);
-
+        console.log("working");
         await fetch("/api/user/signup", {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ username, password }),
         })
-            .then((res) => res.json())
+            .then((res) => {
+                res.json();
+            })
             .then((data) => {
-                if (!data.ok) {
+                console.log(data);
+                if (!data.ok) {   //broken here??
                     setIsLoading(false);
                     setError(data.error);
                 } else {
+                    console.log("in else");
                     localStorage.setItem("user", JSON.stringify(data));
 
                     dispatch({ type: "LOGIN", payload: data });
