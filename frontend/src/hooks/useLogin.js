@@ -15,12 +15,15 @@ export const useLogin = () => {
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ username, password }),
         })
-            .then((res) =>  {return res.json()})
+            .then((res) => {
+                return res.json();
+            })
             .then((data) => {
-                if (!data.error) {
-                    setIsLoading(false); 
+                if (data.error) {
+                    setIsLoading(false);
                     setError(data.error);
                 } else {
+                    console.log("right");
                     localStorage.setItem("user", JSON.stringify(data));
 
                     dispatch({ type: "LOGIN", payload: data });
