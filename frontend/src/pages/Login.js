@@ -19,7 +19,7 @@ const Login = () => {
             <Card>
                 <Card.Body>
                     <Card.Title>Login Page</Card.Title>
-                    <Form onSubmit={handleSubmit()}>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group>
                             <Form.Label>Username</Form.Label>
                             <Form.Control
