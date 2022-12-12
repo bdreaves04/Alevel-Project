@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import { PageNavbar } from "./components/PageNavbar";
 import NextMatches from "./pages/NextMatches";
 import Signup from "./pages/Signup";
+import Admin from "./pages/Admin";
 
 function App() {
     const { user } = useAuthContext();
@@ -31,6 +32,7 @@ function App() {
                             element={!user ? <Signup /> : <Navigate to="/" />}
                         />
                         <Route path="/nextMatches" element={<NextMatches />} />
+                        <Route path="/admin" element = {user ? <Admin /> : <Navigate to="/" />} />
                     </Routes>
                 </div>
             </BrowserRouter>
