@@ -4,7 +4,7 @@ import { useLogout } from "../hooks/useLogout";
 
 import Navbar from "react-bootstrap/Navbar";
 
-const NavbarA = () => {
+export const PageNavbar = () => {
     const { user } = useAuthContext();
     const { logout } = useLogout();
 
@@ -84,5 +84,3 @@ const NavbarA = () => {
         </Navbar>
     );
 };
-
-export default NavbarA;

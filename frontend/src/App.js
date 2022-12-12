@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //pages and components
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import NavbarA from "./components/NavbarA";
+import { PageNavbar } from "./components/PageNavbar";
 import NextMatches from "./pages/NextMatches";
 import Signup from "./pages/Signup";
 
@@ -15,7 +15,7 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <NavbarA />
+                <PageNavbar />
                 <div className="pages">
                     <Routes>
                         <Route
