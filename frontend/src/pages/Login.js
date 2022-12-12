@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Card, Form, Button } from "react-bootstrap";
+import LoadingBtn from "../components/LoadingBtn";
 import { useLogin } from "../hooks/useLogin";
 
 const Login = () => {
@@ -10,7 +11,6 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         await login(username, password);
     };
 
@@ -40,7 +40,7 @@ const Login = () => {
                         </Form.Group>
                         <br />
                         <Button variant="primary" type="submit">
-                            {isLoading ? "loading": "Submit"}
+                            {isLoading ? <LoadingBtn /> : "Submit"}
                         </Button>
                         {error && <div className="error">{error}</div>}
                     </Form>
