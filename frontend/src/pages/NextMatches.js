@@ -8,8 +8,7 @@ const NextMatches = () => {
   document.title = "Next Matches";
   return (
     <div>
-        <Card>
-          <Card.Body>
+        <Card className="nextMatchesPage">
             <Card.Title>Next Matches</Card.Title>
             <Form.Select value={ringNo} onChange={(e)=>{setRingNo(e.target.value)}}>
                 <option value={1}>ring 1</option>
@@ -17,10 +16,9 @@ const NextMatches = () => {
                 <option value={3}>ring 3</option>
             </Form.Select>
             <br/>
-            <span className="matches">
+            <Card.Body className="matches overflow-auto" >
               <MatchDetails ringNo={ringNo}/>
-            </span>
-          </Card.Body>
+            </Card.Body>
         </Card>
       </div>
   )
