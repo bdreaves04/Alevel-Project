@@ -29,7 +29,7 @@ const Signup = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label>{"Password (>8 characters, must inlude: capital, lowercase, number and punctuation)"}</Form.Label>
                             <Form.Control
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
