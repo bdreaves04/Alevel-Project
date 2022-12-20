@@ -7,6 +7,7 @@ const {
   getAthleteBySurname,
   updateAthlete,
   madeWeight,
+  getAthleteFromNo
 } = require("../controllers/athletesController");
 
 //get all athletes
@@ -17,6 +18,8 @@ router.post("/surname", getAthleteBySurname);
 
 //Get single athlete by id
 router.get("/getbyid/:id", getAthleteFromId);
+
+router.post("/getByAthleteNo", getAthleteFromNo);
 
 //add new athlete data
 router.post("/", createAthlete);

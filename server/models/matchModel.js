@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const matchSchema = new Schema(
@@ -6,7 +6,7 @@ const matchSchema = new Schema(
         matchNo: {
             type: Number,
             required: true,
-            unique: true
+            unique: true,
         },
         athleteRedId: {
             type: mongoose.Types.ObjectId,
@@ -19,9 +19,17 @@ const matchSchema = new Schema(
         ringNo: {
             type: Number,
             required: true,
-        }
+        },
+        athleteRedNo: {
+            type: String,
+            required: true,
+        },
+        athleteBlueNo: {
+            type: String,
+            required: true,
+        },
     },
-    { timestamps: true}
+    { timestamps: true }
 );
 
-module.exports = mongoose.model('Match', matchSchema);
+module.exports = mongoose.model("Match", matchSchema);
