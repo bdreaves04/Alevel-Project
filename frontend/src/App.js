@@ -10,8 +10,20 @@ import NextMatches from "./pages/NextMatches";
 import Signup from "./pages/Signup";
 import Admin from "./pages/Admin";
 
-function App() {
+const App = () => {
     const { user } = useAuthContext();
+    let loggedIn = false;
+    let adminCheck = false;
+    if (user) {
+        console.log(user.isAdmin);
+    }
+
+    if (user) {
+        loggedIn = true;
+    }
+    if (user && user.isAdmin) {
+        adminCheck = true;
+    }
 
     return (
         <div className="App">
@@ -21,23 +33,34 @@ function App() {
                     <Routes>
                         <Route
                             path="/"
-                            element={user ? <Home /> : <Navigate to="/login" />}
+                            element={
+                                loggedIn ? <Home /> : <Navigate to="/login" />
+                            }
                         />
                         <Route
                             path="/login"
-                            element={!user ? <Login /> : <Navigate to="/" />}
+                            element={
+                                !loggedIn ? <Login /> : <Navigate to="/" />
+                            }
                         />
                         <Route
                             path="/signup"
-                            element={!user ? <Signup /> : <Navigate to="/" />}
+                            element={
+                                !loggedIn ? <Signup /> : <Navigate to="/" />
+                            }
                         />
                         <Route path="/nextMatches" element={<NextMatches />} />
-                        <Route path="/admin" element = {user ? <Admin /> : <Navigate to="/" />} />
+                        <Route
+                            path="/admin"
+                            element={
+                                adminCheck ? <Admin /> : <Navigate to="/" />
+                            }
+                        />
                     </Routes>
                 </div>
             </BrowserRouter>
         </div>
     );
-}
+};
 
 export default App;

@@ -5,6 +5,7 @@ header {
 .App {
   padding: 2px;
   background-color: #212529;
+  height: 100vh;
 }
 
 header a {
@@ -35,4 +36,16 @@ header .containerNav {
   margin: 0.2%;
   min-height: 90vh;
   border-color: #444;
+}
+
+.adminCards{
+  min-height: 43vh;
+  max-height: 43vh;
+  width: 48vw;
+  padding: 0.5rem;
+}
+
+.nextMatchesPage{
+  padding: 0.5rem;
+  max-height: 90vh;
 }

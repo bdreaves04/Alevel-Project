@@ -69,17 +69,31 @@ export const PageNavbar = () => {
                         </Navbar.Brand>
                     </>
                 )}
+                {user && user.isAdmin && (
+                    <Navbar.Brand >
+                        <Link
+                                to="/admin"
+                                style={{
+                                    color: "#f5f5f5",
+                                    textDecoration: "none",
+                                }}
+                            >
+                                <h2>Admin</h2>
+                            </Link>
+                    </Navbar.Brand>
+                )}
                 {user && (
                     <Navbar.Brand className="justify-content-end">
                         <button
                             type="button"
-                            class="btn btn-outline-light btn-md"
+                            className="btn btn-outline-light btn-md"
                             onClick={logout}
                         >
                             Logout
                         </button>
                     </Navbar.Brand>
                 )}
+                
             </Navbar.Collapse>
         </Navbar>
     );
