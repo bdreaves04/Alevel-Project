@@ -14,9 +14,6 @@ const App = () => {
     const { user } = useAuthContext();
     let loggedIn = false;
     let adminCheck = false;
-    if (user) {
-        console.log(user.isAdmin);
-    }
 
     if (user) {
         loggedIn = true;
