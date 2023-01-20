@@ -1,20 +1,24 @@
 import { useState, useEffect } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { findId } from "../../functions/findAthleteIds";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const CreateMatchCard = () => {
     const [isLoading, setisLoading] = useState(null);
     const [error, setError] = useState(null);
-    const [matchNo, setmatchNo] = useState('101');
-    const [ringNo, setringNo] = useState('');
-    const [athleteBlue, setathleteBlue] = useState('');
-    const [athleteRed, setathleteRed] = useState('');
+    const [matchNo, setmatchNo] = useState("101");
+    const [ringNo, setringNo] = useState("");
+    const [athleteBlue, setathleteBlue] = useState("");
+    const [athleteRed, setathleteRed] = useState("");
+    const { user } = useAuthContext();
 
     useEffect(() => {
         const fetchMatch = async (matchNo) => {
             await fetch("/api/matches/getMatchFromNo", {
                 method: "POST",
-                headers: { "Content-type": "application/json" },
+                headers: {
+                    "Content-type": "application/json",
+                },
                 body: JSON.stringify({
                     matchNo: matchNo,
                 }),
@@ -46,11 +50,17 @@ const CreateMatchCard = () => {
 
         await fetch("/api/matches/", {
             method: "PUT",
-            headers: { "Content-type": "application/json" },
+            headers: {
+                "Content-type": "application/json",
+                "authorisation": "bearer " + user.token,
+            },
             body: JSON.stringify({
                 athleteBlueId: athleteBlueFetched._id,
+                athleteBlueNo: athleteBlue,
+                athleteRedNo: athleteRed,
                 athleteRedId: athleteRedFetched._id,
                 matchNo: matchNo,
+                ringNo: ringNo,
             }),
         })
             .then((res) => res.json())

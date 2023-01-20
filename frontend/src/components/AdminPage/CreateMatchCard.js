@@ -1,14 +1,17 @@
+import mongoose from "mongoose";
 import { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { findId } from "../../functions/findAthleteIds";
+import {useAuthContext} from '../../hooks/useAuthContext'
 
 const CreateMatchCard = () => {
     const [isLoading, setisLoading] = useState(null);
     const [error, setError] = useState(null);
-    const [matchNo, setmatchNo] = useState('');
-    const [ringNo, setringNo] = useState('');
-    const [athleteBlue, setathleteBlue] = useState('');
-    const [athleteRed, setathleteRed] = useState('');
+    const [matchNo, setmatchNo] = useState("");
+    const [ringNo, setringNo] = useState("");
+    const [athleteBlue, setathleteBlue] = useState("");
+    const [athleteRed, setathleteRed] = useState("");
+    const { user } = useAuthContext();
 
     const onclickhandle = async (e) => {
         e.preventDefault();
@@ -16,23 +19,28 @@ const CreateMatchCard = () => {
         setisLoading(true);
         setError(null);
 
-        const athleteRedFetched = await findId(athleteRed)
-            .then((res) => res.json())
-            .then((data) => {
-                data.error ? setError(data.error) : setError(null);
-            });
-        const athleteBlueFetched = await findId(athleteBlue)
-            .then((res) => res.json())
-            .then((data) => {
-                data.error ? setError(data.error) : setError(null);
-            });
+        const athleteRedFetched = await findId(athleteRed);
+
+        const athleteBlueFetched = await findId(athleteBlue);
+
+        if (
+            !mongoose.Types.ObjectId.isValid(athleteBlueFetched) ||
+            !mongoose.Types.ObjectId.isValid(athleteRedFetched)
+        ) {
+            setError("not a valid AthleteNo");
+            setisLoading(false);
+            return;
+        }
 
         await fetch("/api/matches/", {
             method: "POST",
-            headers: { "Content-type": "application/json" },
+            headers: { 
+                "Content-type": "application/json",
+                "authorisation": "bearer " + user.token
+             },
             body: JSON.stringify({
-                athleteBlueId: athleteBlueFetched._id,
-                athleteRedId: athleteRedFetched._id,
+                athleteBlueId: athleteBlueFetched,
+                athleteRedId: athleteRedFetched,
                 athleteBlueNo: athleteBlue,
                 athleteRedNo: athleteRed,
                 matchNo: matchNo,

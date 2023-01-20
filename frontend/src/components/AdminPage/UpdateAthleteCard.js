@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import mongoose from "mongoose";
 import { Button, Card, Form, Row, Col } from "react-bootstrap";
 import { findId } from "../../functions/findAthleteIds";
 
@@ -46,9 +47,13 @@ const UpdateAthleteCard = () => {
 
         setisLoading(true);
         setError(null);
-        const athlete = await findId(athleteNo);
-
-        await fetch(`/api/athletes/${athlete._id}`, {
+        const athleteID = await findId(athleteNo);
+        if (!mongoose.Types.ObjectId.isValid(athleteID)) {
+            setError('not a valid AthleteNo')
+            setisLoading(false)
+            return
+        }
+        await fetch(`/api/athletes/${athleteID}`, {
             method: "PUT",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
