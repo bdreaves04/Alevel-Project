@@ -3,7 +3,7 @@ import { Button, Card, Form } from "react-bootstrap";
 import { findId } from "../../functions/findAthleteIds";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-const CreateMatchCard = () => {
+const UpdateMatchCard = () => {
     const [isLoading, setisLoading] = useState(null);
     const [error, setError] = useState(null);
     const [matchNo, setmatchNo] = useState("101");
@@ -55,10 +55,10 @@ const CreateMatchCard = () => {
                 "authorisation": "bearer " + user.token,
             },
             body: JSON.stringify({
-                athleteBlueId: athleteBlueFetched._id,
+                athleteBlueId: athleteBlueFetched,
                 athleteBlueNo: athleteBlue,
                 athleteRedNo: athleteRed,
-                athleteRedId: athleteRedFetched._id,
+                athleteRedId: athleteRedFetched,
                 matchNo: matchNo,
                 ringNo: ringNo,
             }),
@@ -131,4 +131,4 @@ const CreateMatchCard = () => {
     );
 };
 
-export default CreateMatchCard;
+export default UpdateMatchCard;
