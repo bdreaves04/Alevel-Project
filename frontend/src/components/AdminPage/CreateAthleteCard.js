@@ -24,7 +24,7 @@ const CreateAthleteCard = () => {
                 forename: forename,
                 surname: surname,
                 beltClass: beltClass,
-                weightCLass: weightClass,
+                weightClass: weightClass,
             }),
         })
             .then((res) => res.json())
