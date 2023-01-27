@@ -9,6 +9,10 @@ import { PageNavbar } from "./components/PageNavbar";
 import NextMatches from "./pages/NextMatches";
 import Signup from "./pages/Signup";
 import Admin from "./pages/Admin";
+import RefereePagesContents from './pages/RefereePagesContents';
+import CheckInDesk from "./pages/referee pages/CheckInDesk";
+import RingSide from "./pages/referee pages/RingSide";
+import MatchNoScreen from "./pages/referee pages/MatchNoScreen";
 
 const App = () => {
     const { user } = useAuthContext();
@@ -53,6 +57,31 @@ const App = () => {
                                 adminCheck ? <Admin /> : <Navigate to="/" />
                             }
                         />
+                        <Route
+                            path="/refereeContents"
+                            element={
+                                adminCheck ? <RefereePagesContents /> : <Navigate to="/" />
+                            }
+                        />
+                        <Route 
+                            path="/checkIn"
+                            element={
+                                adminCheck ? <CheckInDesk /> : <Navigate to="/"/>
+                            }
+                        />
+                        <Route 
+                            path="/ringSide"
+                            element={
+                                adminCheck ? <CheckInDesk /> : <Navigate to="/"/>
+                            }
+                        />
+                        <Route 
+                            path="/MatchNo"
+                            element={
+                                adminCheck ? <MatchNoScreen /> : <Navigate to="/"/>
+                            }
+                        />
+
                     </Routes>
                 </div>
             </BrowserRouter>
