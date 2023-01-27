@@ -14,7 +14,12 @@ const userSchema = new Schema(
         },
         password: {
             type: String,
-            reuired: true,
+            required: true,
+        },
+        isAdmin: {
+            type: Boolean,
+            default: false,
+
         }
     }
 )
@@ -44,6 +49,26 @@ userSchema.statics.signup = async function(username,password) {
     const user = await this.create({username, password:hash})
     return user
 
+}
+
+
+//login methods
+userSchema.statics.login = async function(username, password) {
+    if(!username || !password){
+        throw Error('all fields need completing')
+    }
+
+    const user = await this.findOne({username})
+    if(!user){
+        throw Error("Incorrect User Details")
+    }
+
+    const match = await bcrypt.compare(password, user.password)
+    if(!match){
+        throw Error("Incorrect User Details")
+    }
+
+    return user
 }
 
 module.exports = mongoose.model('User', userSchema);

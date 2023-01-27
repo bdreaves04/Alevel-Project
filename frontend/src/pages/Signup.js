@@ -1,24 +1,23 @@
 import { useState } from "react";
+import { useSignup } from "../hooks/useSignup";
 import { Card, Form, Button } from "react-bootstrap";
-import LoadingBtn from "../components/LoadingBtn";
-import { useLogin } from "../hooks/useLogin";
 
-const Login = () => {
-    document.title = "Login";
+const Signup = () => {
+    document.title = "sign-up";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const { login, error, isLoading } = useLogin();
+    const { signup, error, isLoading } = useSignup();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await login(username, password);
-    };
 
+        await signup(username, password);
+    };
     return (
-        <div className="login">
+        <div className="Login">
             <Card>
                 <Card.Body>
-                    <Card.Title>Login Page</Card.Title>
+                    <Card.Title>Sign-up Page</Card.Title>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group>
                             <Form.Label>Username</Form.Label>
@@ -30,7 +29,7 @@ const Login = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label>{"Password (>8 characters, must inlude: capital, lowercase, number and punctuation)"}</Form.Label>
                             <Form.Control
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
@@ -40,7 +39,7 @@ const Login = () => {
                         </Form.Group>
                         <br />
                         <Button variant="primary" type="submit">
-                            {isLoading ? <LoadingBtn /> : "Submit"}
+                            {isLoading ? "loading" : "Submit"}
                         </Button>
                         {error && <div className="error">{error}</div>}
                     </Form>
@@ -50,4 +49,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signup;

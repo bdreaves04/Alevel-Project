@@ -8,6 +8,10 @@ const Home = () => {
       <Card>
         <Card.Body>
           <Card.Title>Home Page</Card.Title>
+          <Card.Text>
+            {/* edit here to add any information to home Page */}
+          
+          </Card.Text>
         </Card.Body>
       </Card>
     </div>

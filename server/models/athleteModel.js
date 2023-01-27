@@ -24,6 +24,11 @@ const athleteSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    athleteNo: {
+      type: String,
+      required: true,
+      unique: true,
+    },
   },
   { timestamps: true }
 );

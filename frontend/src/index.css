@@ -4,9 +4,9 @@ header {
 
 .App {
   padding: 2px;
-  background-color: #a0a0a0;
+  background-color: #212529;
+  height: 100vh;
 }
-
 
 header a {
   color:#444;
@@ -28,21 +28,24 @@ header .containerNav {
   border-style: solid;
   border-color: #444;
   border-radius: 10px;
-  padding: 2px 20px;
-  margin: 5px;
+  padding: 0.1vw 0.5vw;
+  margin: 0.6vw;
 }
 
 .card{
   margin: 0.2%;
-  min-height: 90.3vh;
+  min-height: 90vh;
   border-color: #444;
 }
 
-.logoNavItem{
-  background-color: #fff;
-  padding: 0px 10px;  
+.adminCards{
+  min-height: 43vh;
+  max-height: 43vh;
+  width: 48vw;
+  padding: 0.5rem;
 }
 
-img[alt="logo"]{
-  width: 64px;
+.nextMatchesPage{
+  padding: 0.5rem;
+  max-height: 90vh;
 }
