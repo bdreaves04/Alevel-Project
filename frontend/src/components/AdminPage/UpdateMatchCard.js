@@ -18,6 +18,7 @@ const UpdateMatchCard = () => {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
+                    authorisation: "bearer " + user.token,
                 },
                 body: JSON.stringify({
                     matchNo: matchNo,
@@ -52,7 +53,7 @@ const UpdateMatchCard = () => {
             method: "PUT",
             headers: {
                 "Content-type": "application/json",
-                "authorisation": "bearer " + user.token,
+                authorisation: "bearer " + user.token,
             },
             body: JSON.stringify({
                 athleteBlueId: athleteBlueFetched,

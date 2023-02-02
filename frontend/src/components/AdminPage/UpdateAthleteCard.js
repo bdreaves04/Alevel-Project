@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import mongoose from "mongoose";
 import { Button, Card, Form, Row, Col } from "react-bootstrap";
 import { findId } from "../../functions/findAthleteIds";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const UpdateAthleteCard = () => {
     const [isLoading, setisLoading] = useState(null);
@@ -11,12 +12,16 @@ const UpdateAthleteCard = () => {
     const [surname, setsurname] = useState("");
     const [beltClass, setbeltClass] = useState("");
     const [weightClass, setweightClass] = useState("");
+    const { user } = useAuthContext();
 
     useEffect(() => {
         const fetchAthlete = async (athleteNo) => {
             await fetch("/api/athletes/getByAthleteNo", {
                 method: "POST",
-                headers: { "Content-type": "application/json" },
+                headers: {
+                    "Content-type": "application/json",
+                    authorisation: "bearer " + user.token,
+                },
                 body: JSON.stringify({
                     athleteNo: athleteNo,
                 }),
@@ -25,17 +30,17 @@ const UpdateAthleteCard = () => {
                 .then((data) => {
                     if (data.error) {
                         setError(data.error);
-                        setforename('');
-                        setsurname('');
-                        setbeltClass('');
-                        setweightClass('');
+                        setforename("");
+                        setsurname("");
+                        setbeltClass("");
+                        setweightClass("");
                     } else {
                         setError(null);
                         setforename(data.forename);
                         setsurname(data.surname);
                         setbeltClass(data.beltClass);
                         setweightClass(data.weightClass);
-                        setisLoading(false)
+                        setisLoading(false);
                     }
                 });
         };
@@ -49,9 +54,9 @@ const UpdateAthleteCard = () => {
         setError(null);
         const athleteID = await findId(athleteNo);
         if (!mongoose.Types.ObjectId.isValid(athleteID)) {
-            setError('not a valid AthleteNo')
-            setisLoading(false)
-            return
+            setError("not a valid AthleteNo");
+            setisLoading(false);
+            return;
         }
         await fetch(`/api/athletes/${athleteID}`, {
             method: "PUT",

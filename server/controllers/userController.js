@@ -27,8 +27,8 @@ const signupUser = async (req,res)=>{
         const user = await userModel.signup(username,password)
 
         //creating token for user when signing up
-        const token = createToken(user._id,user.isAdmin)
-        const isAdmin = user.isAdmin;
+        const token = createToken(user._id,false)
+        const isAdmin = false;
 
         res.status(200).json({username, token, isAdmin})
     } catch (error) {

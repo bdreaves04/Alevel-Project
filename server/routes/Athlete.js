@@ -9,6 +9,8 @@ const {
   madeWeight,
   getAthleteFromNo
 } = require("../controllers/athletesController");
+const requireAuth = require("../middleware/requireAuth");
+
 
 //get all athletes
 router.get("/", getAthletes);
@@ -20,6 +22,8 @@ router.post("/surname", getAthleteBySurname);
 router.get("/getbyid/:id", getAthleteFromId);
 
 router.post("/getByAthleteNo", getAthleteFromNo);
+
+router.use(requireAuth)
 
 //add new athlete data
 router.post("/", createAthlete);

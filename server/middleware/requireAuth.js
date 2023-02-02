@@ -12,8 +12,16 @@ const requireAuth = async (req,res,next) =>{
     try {
         const {_id} = jwt.verify(token, process.env.SECRET)
 
-        req.user = await User.findById({_id}).select('_id')
-        next()
+        req.user = await User.findById({_id}).select('_id, isAdmin')
+
+        console.log(req.user)
+
+        if(req.user.isAdmin){
+            next()
+        }
+        else{
+            throw Error("not an Admin")
+        }
 
     } catch (error) {
         console.error(error)
