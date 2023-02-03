@@ -11,13 +11,14 @@ export const PageNavbar = () => {
     return (
         <Navbar bg="dark" expand="md" variant="dark" className="d-flex">
             <Navbar.Brand>
-                
-                <img
-                    src="./logo.svg"
-                    alt="logo"
-                    width="57vh"
-                    className="d-inline-block align-top"
-                />
+                <Link to="/">
+                    <img
+                        src="./logo.svg"
+                        alt="logo"
+                        width="57vh"
+                        className="d-inline-block align-top"
+                    />
+                </Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav-md" />
             <Navbar.Collapse>
@@ -70,16 +71,16 @@ export const PageNavbar = () => {
                     </>
                 )}
                 {user && user.isAdmin && (
-                    <Navbar.Brand >
+                    <Navbar.Brand>
                         <Link
-                                to="/admin"
-                                style={{
-                                    color: "#f5f5f5",
-                                    textDecoration: "none",
-                                }}
-                            >
-                                <h2>Admin</h2>
-                            </Link>
+                            to="/admin"
+                            style={{
+                                color: "#f5f5f5",
+                                textDecoration: "none",
+                            }}
+                        >
+                            <h2>Admin</h2>
+                        </Link>
                     </Navbar.Brand>
                 )}
                 {user && (
@@ -93,7 +94,6 @@ export const PageNavbar = () => {
                         </button>
                     </Navbar.Brand>
                 )}
-                
             </Navbar.Collapse>
         </Navbar>
     );
