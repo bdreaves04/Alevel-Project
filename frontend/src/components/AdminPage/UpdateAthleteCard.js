@@ -45,7 +45,7 @@ const UpdateAthleteCard = () => {
                 });
         };
         fetchAthlete(athleteNo);
-    }, [athleteNo]);
+    }, [athleteNo,user]);
 
     const onclickhandle = async (e) => {
         e.preventDefault();

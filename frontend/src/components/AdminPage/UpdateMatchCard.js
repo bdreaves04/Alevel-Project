@@ -38,7 +38,7 @@ const UpdateMatchCard = () => {
                 });
         };
         fetchMatch(matchNo);
-    }, [matchNo]);
+    }, [matchNo,user]);
 
     const onclickhandle = async (e) => {
         e.preventDefault();
