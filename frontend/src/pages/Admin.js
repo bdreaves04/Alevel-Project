@@ -12,25 +12,25 @@ const Admin = () => {
             <Container fluid>
                 <Row>
                     <Col>
-                        <Card className="adminCards">
+                        <Card className="adminCards overflow-auto">
                             <CreateMatchCard />
                         </Card>
                     </Col>
                     <Col>
-                        <Card className="adminCards">
+                        <Card className="adminCards overflow-auto">
                             <CreateAthleteCard />
                         </Card>
                     </Col>
                 </Row>
-                <br />
+                <br id="adminCardBreak"/>
                 <Row>
                     <Col>
-                        <Card className="adminCards">
+                        <Card className="adminCards overflow-auto">
                             <UpdateMatchCard />
                         </Card>
                     </Col>
                     <Col>
-                        <Card className="adminCards">
+                        <Card className="adminCards overflow-auto">
                             <UpdateAthleteCard />
                         </Card>
                     </Col>

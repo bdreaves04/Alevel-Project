@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Form, Row, Col } from "react-bootstrap";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const CreateAthleteCard = () => {
     const [isLoading, setisLoading] = useState(null);
@@ -9,6 +10,7 @@ const CreateAthleteCard = () => {
     const [surname, setsurname] = useState("");
     const [beltClass, setbeltClass] = useState("");
     const [weightClass, setweightClass] = useState("");
+    const { user } = useAuthContext();
 
     const onclickhandle = async (e) => {
         e.preventDefault();
@@ -18,7 +20,10 @@ const CreateAthleteCard = () => {
 
         await fetch("/api/athletes/", {
             method: "POST",
-            headers: { "Content-type": "application/json" },
+            headers: {
+                "Content-type": "application/json",
+                authorisation: "bearer " + user.token,
+            },
             body: JSON.stringify({
                 athleteNo: athleteNo,
                 forename: forename,
