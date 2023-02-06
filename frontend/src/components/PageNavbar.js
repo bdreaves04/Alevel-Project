@@ -4,6 +4,11 @@ import { useLogout } from "../hooks/useLogout";
 
 import Navbar from "react-bootstrap/Navbar";
 
+const styles = {
+    color: "#f5f5f5",
+    textDecoration: "none",
+}
+
 export const PageNavbar = () => {
     const { user } = useAuthContext();
     const { logout } = useLogout();
@@ -25,10 +30,7 @@ export const PageNavbar = () => {
                 <Navbar.Brand>
                     <Link
                         to="/"
-                        style={{
-                            color: "#f5f5f5",
-                            textDecoration: "none",
-                        }}
+                        style={styles}
                     >
                         <h2>Home</h2>
                     </Link>
@@ -36,34 +38,25 @@ export const PageNavbar = () => {
                 <Navbar.Brand>
                     <Link
                         to="/nextMatches"
-                        style={{
-                            color: "#f5f5f5",
-                            textDecoration: "none",
-                        }}
+                        style={styles}
                     >
                         <h2>Next Matches</h2>
                     </Link>
                 </Navbar.Brand>
                 {!user && (
                     <>
-                        <Navbar.Brand className="justify-content-end">
+                        <Navbar.Brand className="ms-auto">
                             <Link
                                 to="/login"
-                                style={{
-                                    color: "#f5f5f5",
-                                    textDecoration: "none",
-                                }}
+                                style={styles}
                             >
                                 <h2>Login</h2>
                             </Link>
                         </Navbar.Brand>
-                        <Navbar.Brand className="justify-content-end">
+                        <Navbar.Brand>
                             <Link
                                 to="/signup"
-                                style={{
-                                    color: "#f5f5f5",
-                                    textDecoration: "none",
-                                }}
+                                style={styles}
                             >
                                 <h2>Signup</h2>
                             </Link>
@@ -71,20 +64,27 @@ export const PageNavbar = () => {
                     </>
                 )}
                 {user && user.isAdmin && (
-                    <Navbar.Brand>
-                        <Link
-                            to="/admin"
-                            style={{
-                                color: "#f5f5f5",
-                                textDecoration: "none",
-                            }}
-                        >
-                            <h2>Admin</h2>
-                        </Link>
-                    </Navbar.Brand>
+                    <>
+                        <Navbar.Brand>
+                            <Link
+                                to="/admin"
+                                style={styles}
+                            >
+                                <h2>Admin</h2>
+                            </Link>
+                        </Navbar.Brand>
+                        <Navbar.Brand>
+                            <Link
+                                to="/refereeContents"
+                                style={styles}
+                            >
+                                <h2>RefereePages</h2>
+                            </Link>
+                        </Navbar.Brand>
+                    </>
                 )}
                 {user && (
-                    <Navbar.Brand className="justify-content-end">
+                    <Navbar.Brand className="ms-auto">
                         <button
                             type="button"
                             className="btn btn-outline-light btn-md"
