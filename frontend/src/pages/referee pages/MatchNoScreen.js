@@ -1,8 +1,11 @@
 import React from 'react'
+import { Card } from 'react-bootstrap'
 
 const MatchNoScreen = () => {
   return (
-    <div>MatchNoScreen</div>
+    <Card>
+      matchNo Screen
+    </Card>
   )
 }
 

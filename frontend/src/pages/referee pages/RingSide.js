@@ -1,8 +1,11 @@
 import React from 'react'
+import { Card } from 'react-bootstrap'
 
 const RingSide = () => {
   return (
-    <div>RingSide</div>
+    <Card>
+      ringSide
+    </Card>
   )
 }
 

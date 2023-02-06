@@ -1,8 +1,11 @@
 import React from 'react'
+import { Card } from 'react-bootstrap'
 
 const CheckInDesk = () => {
   return (
-    <div>CheckInDesk</div>
+    <Card>
+      checkIn Desk
+    </Card>
   )
 }
 
