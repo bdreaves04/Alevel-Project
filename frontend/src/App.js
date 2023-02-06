@@ -72,7 +72,7 @@ const App = () => {
                         <Route 
                             path="/ringSide"
                             element={
-                                adminCheck ? <CheckInDesk /> : <Navigate to="/"/>
+                                adminCheck ? <RingSide /> : <Navigate to="/"/>
                             }
                         />
                         <Route 
