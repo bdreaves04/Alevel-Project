@@ -1,5 +1,5 @@
 export const findId = async (athleteNo) => {
-    await fetch("/api/athletes/getByAthleteNo", {
+    return await fetch("/api/athletes/getByAthleteNo", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ athleteNo: athleteNo }),
@@ -7,6 +7,7 @@ export const findId = async (athleteNo) => {
         .then((res) => res.json())
         .then((data) => {
             if (data.error) {
+                console.log(athleteNo)
                 return data.error;
             }
             return data._id;
