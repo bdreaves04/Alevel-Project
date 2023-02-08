@@ -1,43 +1,68 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const style = {
+const styleText = {
     color: "#050505",
-    textDecoration: "none",
+    marginTop: "12.5vh",
+};
+
+const styleCard = {
+    minHeight: "35vh",
+    maxHeight: "35vh",
+    textAlign: "center",
+    borderRadius: "25px",
 };
 
 const RefereePagesContents = () => {
     document.title = "Referee Contents";
     return (
         <div className="Home">
-            <Card>
+            <Card
+                style={{
+                    maxHeight: "90vh",
+                    paddingTop: "5.5vh",
+                    paddingLeft: "2vw",
+                    paddingRight: "2vw",
+                }}
+            >
                 <Card.Body>
-                    <Card.Title>Referee Pages</Card.Title>
                     <Row>
                         <Col>
-                            <Card>
-                                <Link to={"/ringSide"} style={style}>
-                                    Ring Side
-                                </Link>
-                            </Card>
+                            <Link
+                                to={"/ringSide"}
+                                style={{ textDecoration: "none" }}
+                            >
+                                <Card
+                                    style={styleCard}
+                                    className="align-center"
+                                >
+                                    <h1 style={styleText}>Ring Side</h1>
+                                </Card>
+                            </Link>
                         </Col>
                         <Col>
-                            <Card>
-                                <Link to={"/matchNo"} style={style}>
-                                    MatchNoScreen
-                                </Link>
-                            </Card>
+                            <Link
+                                to={"/matchNo"}
+                                style={{ textDecoration: "none" }}
+                            >
+                                <Card style={styleCard}>
+                                    <h1 style={styleText}>Match No. Screen</h1>
+                                </Card>
+                            </Link>
                         </Col>
                     </Row>
+                    <br />
                     <Row>
                         <Col>
-                            <Card>
-                                <Link to={"/checkIn"} style={style}>
-                                    CheckIn Desk
-                                </Link>
-                            </Card>
+                            <Link
+                                to={"/checkIn"}
+                                style={{ textDecoration: "none" }}
+                            >
+                                <Card style={styleCard}>
+                                    <h1 style={styleText}>Check In Desk</h1>
+                                </Card>
+                            </Link>
                         </Col>
                     </Row>
                 </Card.Body>
