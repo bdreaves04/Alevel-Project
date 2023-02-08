@@ -4,27 +4,28 @@ import AthleteDetails from "./AthleteDetails";
 const MatchDetails = (props) => {
     const [matches, setMatches] = useState(null);
 
-    const fetchData = async () => {
-        await fetch(`/api/matches/ring/`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ringNo: props.ringNo }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setMatches(data);
-            });
-    }
-
     useEffect(() => {
-        fetchData()
-        console.log("fetched on load")
+        const fetchData = async () => {
+            await fetch(`/api/matches/ring/`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ringNo: props.ringNo }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    setMatches(data);
+                });
+        };
+
+
+        //refreshing matches list every 10 seconds
+        fetchData();
+        console.log("fetched on load");
         const interval = setInterval(async () => {
-            await fetchData()
+            await fetchData();
         }, 10000);
 
-        return () => clearInterval(interval)
-// eslint-disable-next-line
+        return () => clearInterval(interval);
     }, [props]);
 
     return (

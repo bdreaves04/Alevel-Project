@@ -5,6 +5,7 @@ import { findId } from "../../functions/findAthleteIds";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 const UpdateAthleteCard = () => {
+    //State variable setup - allows to change variables in react
     const [isLoading, setisLoading] = useState(null);
     const [error, setError] = useState(null);
     const [athleteNo, setathleteNo] = useState(1);
@@ -14,6 +15,7 @@ const UpdateAthleteCard = () => {
     const [weightClass, setweightClass] = useState("");
     const { user } = useAuthContext();
 
+    //refresh athlete on search to get athete data filled in on forms
     useEffect(() => {
         const fetchAthlete = async (athleteNo) => {
             await fetch("/api/athletes/getByAthleteNo", {
@@ -47,6 +49,7 @@ const UpdateAthleteCard = () => {
         fetchAthlete(athleteNo);
     }, [athleteNo,user]);
 
+    //interacts with server to update athlete data
     const onclickhandle = async (e) => {
         e.preventDefault();
 
@@ -83,6 +86,7 @@ const UpdateAthleteCard = () => {
     return (
         <>
             <Card.Title>Update an Athlete</Card.Title>
+            {/* form which handles user input for athlete details */}
             <Form onSubmit={onclickhandle}>
                 <Form.Group>
                     <Form.Label>Athlete No.</Form.Label>
