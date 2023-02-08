@@ -28,6 +28,11 @@ const matchSchema = new Schema(
             type: String,
             required: true,
         },
+        completed: {
+            type: Boolean,
+            required: true,
+            default: false
+        }
     },
     { timestamps: true }
 );
