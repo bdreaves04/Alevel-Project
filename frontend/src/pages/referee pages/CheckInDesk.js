@@ -10,6 +10,8 @@ const CheckInDesk = () => {
     const [error, setError] = React.useState(null);
     const { user } = useAuthContext();
 
+
+    //sends a request to backend to change status of athlete in match to be checked in
     const checkIn = async (matchNo, athleteNo) => {
         await fetch(`/api/matches/checkAthleteIn`, {
             method: "PUT",
@@ -28,6 +30,8 @@ const CheckInDesk = () => {
             .catch((err) => setError(err.message));
     };
 
+
+    //fetches match lists per ring
     const fetchMatchesOne = async () => {
         await fetch(`/api/matches/getComplete`, {
             method: "POST",
