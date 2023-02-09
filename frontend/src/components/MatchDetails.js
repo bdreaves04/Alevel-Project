@@ -6,7 +6,7 @@ const MatchDetails = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await fetch(`/api/matches/ring/`, {
+            await fetch(`/api/matches/getComplete/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ ringNo: props.ringNo }),
