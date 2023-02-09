@@ -7,6 +7,7 @@ const {
     updateMatch,
     completeMatch,
     getComplete,
+    checkAthlete,
 } = require("../controllers/matchesController");
 const requireAuth = require("../middleware/requireAuth");
 const router = express.Router();
@@ -31,5 +32,7 @@ router.post("/", createMatch);
 router.put("/", updateMatch);
 
 router.put("/complete", completeMatch);
+
+router.put("/checkAthleteIn", checkAthlete)
 
 module.exports = router;

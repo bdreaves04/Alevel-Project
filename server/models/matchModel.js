@@ -32,7 +32,15 @@ const matchSchema = new Schema(
             type: Boolean,
             required: true,
             default: false
-        }
+        },
+        redChecked: {
+            type: Boolean,
+            default: false,
+        },
+        blueChecked: {
+            type: Boolean,
+            default: false
+        },
     },
     { timestamps: true }
 );

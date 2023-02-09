@@ -79,6 +79,49 @@ const getComplete = async (req, res) => {
     res.status(200).json(matches);
 };
 
+const checkAthlete = async (req, res) => {
+    const { matchNo, athleteNo } = req.body;
+    const match = await matchModel.findOne({ matchNo });
+
+    //checks whether the athlete number for a given match number is in the match and if it is the red or blue athlete
+    //then sends a database request to update the colour checked field depending on the athlete colour
+    if (match.athleteRedNo === athleteNo) {
+        return await matchModel
+            .findOneAndUpdate(
+                { matchNo },
+                { athleteRedChecked: true },
+                { new: true }
+            )
+            .then((res) => res.json())
+            .then((data) => {
+                return res.status(200).json(data);
+            })
+            .catch((error) => {
+                return res.status(500).json(error);
+            });
+    } else if (match.athleteBlueNo === athleteNo) {
+        return await matchModel
+            .findOneAndUpdate(
+                { matchNo },
+                { athleteBlueChecked: true },
+                { new: true }
+            )
+            .then((res) => res.json())
+            .then((data) => {
+                return res.status(200).json(data);
+            })
+            .catch((error) => {
+                return res.status(500).json(error);
+            });
+    } else {
+        return res
+            .status(404)
+            .json({
+                error: `athleteNo ${athleteNo} not found in match ${matchNo}`,
+            });
+    }
+};
+
 module.exports = {
     createMatch,
     getMatchByMatchNo,
@@ -87,4 +130,5 @@ module.exports = {
     updateMatch,
     completeMatch,
     getComplete,
+    checkAthlete,
 };
