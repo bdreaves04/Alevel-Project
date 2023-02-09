@@ -89,10 +89,9 @@ const checkAthlete = async (req, res) => {
         return await matchModel
             .findOneAndUpdate(
                 { matchNo },
-                { athleteRedChecked: true },
+                { redChecked: true },
                 { new: true }
             )
-            .then((res) => res.json())
             .then((data) => {
                 return res.status(200).json(data);
             })
@@ -103,10 +102,9 @@ const checkAthlete = async (req, res) => {
         return await matchModel
             .findOneAndUpdate(
                 { matchNo },
-                { athleteBlueChecked: true },
+                { blueChecked: true },
                 { new: true }
             )
-            .then((res) => res.json())
             .then((data) => {
                 return res.status(200).json(data);
             })
