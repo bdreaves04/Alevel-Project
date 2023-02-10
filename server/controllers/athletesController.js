@@ -14,7 +14,7 @@ const createAthlete = async (req, res) => {
 
 //get all athletes
 const getAthletes = async (req, res) => {
-  const athletes = await Athlete.find({}).sort({ surname: 1 });
+  const athletes = await Athlete.find({}).sort({ athleteNo: 1 });
   res.status(200).json(athletes);
 };
 
