@@ -26,7 +26,7 @@ const AthleteDetails = (props) => {
 
   return (
     <div>
-      <p>{athlete ? athlete.forename : "loading"} {athlete ? athlete.surname : "loading"}</p>
+      <p>no: {athlete? athlete.athleteNo : "loading"}, {athlete ? athlete.forename : "loading"} {athlete ? athlete.surname : "loading"}</p>
     </div>
   );
 };
