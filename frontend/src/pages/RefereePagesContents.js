@@ -64,6 +64,16 @@ const RefereePagesContents = () => {
                                 </Card>
                             </Link>
                         </Col>
+                        <Col>
+                            <Link
+                                to={"/weighIn"}
+                                style={{ textDecoration: "none" }}
+                            >
+                                <Card style={styleCard}>
+                                    <h1 style={styleText}>Weigh In Dash</h1>
+                                </Card>
+                            </Link>
+                        </Col>
                     </Row>
                 </Card.Body>
             </Card>
