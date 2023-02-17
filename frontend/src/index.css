@@ -59,3 +59,9 @@ header .containerNav {
   padding: 0.5rem;
   max-height: 90vh;
 }
+
+.messageItem span {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
