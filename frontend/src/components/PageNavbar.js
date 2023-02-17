@@ -27,7 +27,7 @@ export const PageNavbar = () => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav-md" />
             <Navbar.Collapse>
-                <Navbar.Brand>
+                <Navbar.Brand style={{marginRight: "2rem"}}>
                     <Link
                         to="/"
                         style={styles}
@@ -35,17 +35,17 @@ export const PageNavbar = () => {
                         <h2>Home</h2>
                     </Link>
                 </Navbar.Brand>
-                <Navbar.Brand>
+                <Navbar.Brand style={{marginRight: "2rem"}}>
                     <Link
                         to="/nextMatches"
                         style={styles}
                     >
                         <h2>Next Matches</h2>
                     </Link>
-                </Navbar.Brand>
+                </Navbar.Brand >
                 {!user && (
                     <>
-                        <Navbar.Brand className="ms-auto">
+                        <Navbar.Brand className="ms-auto" style={{marginRight: "2rem"}}>
                             <Link
                                 to="/login"
                                 style={styles}
@@ -65,7 +65,7 @@ export const PageNavbar = () => {
                 )}
                 {user && user.isAdmin && (
                     <>
-                        <Navbar.Brand>
+                        <Navbar.Brand style={{marginRight: "2rem"}}>
                             <Link
                                 to="/admin"
                                 style={styles}
@@ -73,18 +73,18 @@ export const PageNavbar = () => {
                                 <h2>Admin</h2>
                             </Link>
                         </Navbar.Brand>
-                        <Navbar.Brand>
+                        <Navbar.Brand style={{marginRight: "2rem"}}>
                             <Link
                                 to="/refereeContents"
                                 style={styles}
                             >
-                                <h2>RefereePages</h2>
+                                <h2>Referee Pages</h2>
                             </Link>
                         </Navbar.Brand>
                     </>
                 )}
                 {user && (
-                    <Navbar.Brand className="ms-auto">
+                    <Navbar.Brand className="ms-auto" >
                         <button
                             type="button"
                             className="btn btn-outline-light btn-md"
