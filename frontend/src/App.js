@@ -14,6 +14,7 @@ import CheckInDesk from "./pages/referee pages/CheckInDesk";
 import RingSide from "./pages/referee pages/RingSide";
 import MatchNoScreen from "./pages/referee pages/MatchNoScreen";
 import { WeighIn } from "./pages/referee pages/WeighIn";
+import { Profile } from "./pages/Profile";
 
 const App = () => {
     const { user } = useAuthContext();
@@ -37,6 +38,12 @@ const App = () => {
                             path="/"
                             element={
                                 loggedIn ? <Home /> : <Navigate to="/login" />
+                            }
+                        />
+                        <Route
+                            path="/profile"
+                            element={
+                                loggedIn ? <Profile /> : <Navigate to="/login" />
                             }
                         />
                         <Route

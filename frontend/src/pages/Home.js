@@ -10,7 +10,7 @@ const Home = () => {
     const [error, setError] = React.useState("");
 
     const fetchMessages = async () => {
-        console.log("fetched messages")
+        console.log("fetched messages");
         await fetch("/api/info", {
             method: "GET",
             headers: {
@@ -38,7 +38,7 @@ const Home = () => {
         }).catch((err) => {
             setError(err);
         });
-        await fetchMessages()
+        await fetchMessages();
     };
 
     const deleteMessage = async (e, id) => {
@@ -49,9 +49,8 @@ const Home = () => {
                 "Content-Type": "application/json",
                 authorisation: "bearer " + user.token,
             },
-        })
-            .catch((err) => setError(err));
-        await fetchMessages()
+        }).catch((err) => setError(err));
+        await fetchMessages();
     };
 
     React.useEffect(() => {
@@ -60,6 +59,10 @@ const Home = () => {
         }, 10000);
         return () => clearInterval(interval);
     }, [messagesFetched]);
+
+    React.useEffect(() => {
+        fetchMessages();
+    }, []);
 
     return (
         <div className="Home">

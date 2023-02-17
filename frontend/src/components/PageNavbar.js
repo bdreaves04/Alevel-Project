@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 const styles = {
     color: "#f5f5f5",
     textDecoration: "none",
-}
+};
 
 export const PageNavbar = () => {
     const { user } = useAuthContext();
@@ -27,37 +27,28 @@ export const PageNavbar = () => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav-md" />
             <Navbar.Collapse>
-                <Navbar.Brand style={{marginRight: "2rem"}}>
-                    <Link
-                        to="/"
-                        style={styles}
-                    >
+                <Navbar.Brand style={{ marginRight: "2rem" }}>
+                    <Link to="/" style={styles}>
                         <h2>Home</h2>
                     </Link>
                 </Navbar.Brand>
-                <Navbar.Brand style={{marginRight: "2rem"}}>
-                    <Link
-                        to="/nextMatches"
-                        style={styles}
-                    >
+                <Navbar.Brand style={{ marginRight: "2rem" }}>
+                    <Link to="/nextMatches" style={styles}>
                         <h2>Next Matches</h2>
                     </Link>
-                </Navbar.Brand >
+                </Navbar.Brand>
                 {!user && (
                     <>
-                        <Navbar.Brand className="ms-auto" style={{marginRight: "2rem"}}>
-                            <Link
-                                to="/login"
-                                style={styles}
-                            >
+                        <Navbar.Brand
+                            className="ms-auto"
+                            style={{ marginRight: "2rem" }}
+                        >
+                            <Link to="/login" style={styles}>
                                 <h2>Login</h2>
                             </Link>
                         </Navbar.Brand>
                         <Navbar.Brand>
-                            <Link
-                                to="/signup"
-                                style={styles}
-                            >
+                            <Link to="/signup" style={styles}>
                                 <h2>Signup</h2>
                             </Link>
                         </Navbar.Brand>
@@ -65,34 +56,35 @@ export const PageNavbar = () => {
                 )}
                 {user && user.isAdmin && (
                     <>
-                        <Navbar.Brand style={{marginRight: "2rem"}}>
-                            <Link
-                                to="/admin"
-                                style={styles}
-                            >
+                        <Navbar.Brand style={{ marginRight: "2rem" }}>
+                            <Link to="/admin" style={styles}>
                                 <h2>Admin</h2>
                             </Link>
                         </Navbar.Brand>
-                        <Navbar.Brand style={{marginRight: "2rem"}}>
-                            <Link
-                                to="/refereeContents"
-                                style={styles}
-                            >
+                        <Navbar.Brand style={{ marginRight: "2rem" }}>
+                            <Link to="/refereeContents" style={styles}>
                                 <h2>Referee Pages</h2>
                             </Link>
                         </Navbar.Brand>
                     </>
                 )}
                 {user && (
-                    <Navbar.Brand className="ms-auto" >
-                        <button
-                            type="button"
-                            className="btn btn-outline-light btn-md"
-                            onClick={logout}
-                        >
-                            Logout
-                        </button>
-                    </Navbar.Brand>
+                    <>
+                        <Navbar.Brand className="ms-auto">
+                        <Link to="/profile" style={styles}>
+                        <h2>Profile</h2>
+                    </Link>
+                        </Navbar.Brand>
+                        <Navbar.Brand>
+                            <button
+                                type="button"
+                                className="btn btn-outline-light btn-md"
+                                onClick={logout}
+                            >
+                                Logout
+                            </button>
+                        </Navbar.Brand>
+                    </>
                 )}
             </Navbar.Collapse>
         </Navbar>
