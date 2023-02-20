@@ -21,9 +21,6 @@ const Home = () => {
             .then((data) => {
                 setMessagesFetched(data);
             })
-            .catch((err) => {
-                setError(err);
-            });
     };
 
     const addMessage = async (e, msg) => {
@@ -35,9 +32,16 @@ const Home = () => {
                 authorisation: "bearer " + user.token,
             },
             body: JSON.stringify({ message: msg }),
-        }).catch((err) => {
-            setError(err);
-        });
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                if (!data.ok) throw Error(data.error);
+            })
+            .catch((err) => {
+                setError(err.message);
+            });
         await fetchMessages();
     };
 
@@ -49,7 +53,11 @@ const Home = () => {
                 "Content-Type": "application/json",
                 authorisation: "bearer " + user.token,
             },
-        }).catch((err) => setError(err));
+        })
+            .then((data) => {
+                if (!data.ok) throw Error(data.error);
+            })
+            .catch((err) => setError(err.message));
         await fetchMessages();
     };
 
@@ -69,6 +77,7 @@ const Home = () => {
             <Card>
                 <Card.Body>
                     <Card.Title>Home Page</Card.Title>
+                    <Card.Text style={{ color: "red" }}>{error}</Card.Text>
                     {user.isAdmin && (
                         <Form>
                             <Form.Group>
@@ -94,8 +103,8 @@ const Home = () => {
                     <div>
                         {messagesFetched &&
                             messagesFetched.map((message) => (
-                                <div className="messageItem">
-                                    <p key={message._id}>
+                                <div className="messageItem" key={message._id}>
+                                    <p>
                                         {message.message}
                                         {user.isAdmin && (
                                             <span
@@ -114,7 +123,6 @@ const Home = () => {
                                 </div>
                             ))}
                     </div>
-                    <Card.Text>{error}</Card.Text>
                 </Card.Body>
             </Card>
         </div>
