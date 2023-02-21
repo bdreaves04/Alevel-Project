@@ -1,0 +1,23 @@
+{
+  "name": "files",
+  "version": "1.0.0",
+  "description": "taekwondo tournament tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm install && concurrently \"cd server && npm run start\" \"cd frontend && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdreaves04/Computer-science-project-tkd-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdreaves04/Computer-science-project-tkd-tracker/issues"
+  },
+  "homepage": "https://github.com/bdreaves04/Computer-science-project-tkd-tracker#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
