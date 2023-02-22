@@ -2,27 +2,21 @@ import React from "react";
 import { Card, Form, Button } from "react-bootstrap";
 import AthleteDetails from "../../components/AthleteDetails";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFetchMatches } from "../../hooks/useFetchMatches";
 
 const RingSide = () => {
     document.title = "Ring Side DashBoard";
-    const [ringNo, setRingNo] = React.useState(1);
-    const [matches, setMatches] = React.useState(null);
     const [error, setError] = React.useState(" ");
-    const { user } = useAuthContext();
+    const [ringNo, setRingNo] = React.useState(1);
 
-    const fetchMatches = async (ringNo) => {
-        await fetch(`/api/matches/getComplete`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ringNo: ringNo }),
-        })
-            .then((res) => res.json())
-            .then((data) => setMatches(data));
-    };
-    
+    const { user } = useAuthContext();
+    const { matches, fetchMatches } = useFetchMatches();
+
+    //loads matches on load and on form change
+    fetchMatches(ringNo);
     React.useEffect(() => {
         fetchMatches(ringNo);
-    }, [ringNo]);
+    }, [ringNo, fetchMatches]);
 
     const sendCompleted = async (matchNo) => {
         await fetch(`api/matches/complete`, {
@@ -34,12 +28,13 @@ const RingSide = () => {
             body: JSON.stringify({ matchNo: matchNo }),
         })
             .then((res) => res.json())
+            .then((data) => {
+                if (!data.ok) throw Error(data.error);
+            })
             .catch((err) => {
                 setError(err);
             });
-
-            fetchMatches(ringNo);
-
+        await fetchMatches(ringNo)
     };
 
     return (
@@ -49,7 +44,6 @@ const RingSide = () => {
         >
             <Card.Title>Ring No</Card.Title>
             <Form.Select
-                value={ringNo}
                 onChange={(e) => {
                     setRingNo(e.target.value);
                 }}

@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from "react";
+import { useFetchMatches } from "../hooks/useFetchMatches";
 import AthleteDetails from "./AthleteDetails";
 
 const MatchDetails = (props) => {
-    const [matches, setMatches] = useState(null);
+    const { matches, fetchMatches } = useFetchMatches();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            await fetch(`/api/matches/getComplete/`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ringNo: props.ringNo }),
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    setMatches(data);
-                });
-        };
+    //refreshing matches list on load every 10 seconds
 
-
-        //refreshing matches list every 10 seconds
-        fetchData();
-        console.log("fetched on load");
+    React.useEffect(() => {
+        fetchMatches(props.ringNo);
         const interval = setInterval(async () => {
-            await fetchData();
+            await fetchMatches(props.ringNo);
         }, 10000);
 
         return () => clearInterval(interval);

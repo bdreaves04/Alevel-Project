@@ -1,26 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { Form } from "react-bootstrap";
+import { useFetchMatches } from "../../hooks/useFetchMatches";
 
 const MatchNoScreen = () => {
     const [ringNo, setRingNo] = React.useState(1);
-    const [matches, setMatches] = React.useState(null);
+    const { matches, fetchMatches } = useFetchMatches();
 
     React.useEffect(() => {
-        const fetchMatches = async (ringNo) => {
-            await fetch(`/api/matches/getComplete`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ringNo: ringNo }),
-            })
-                .then((res) => res.json())
-                .then((data) => setMatches(data));
-        };
         fetchMatches(ringNo);
         const interval = setInterval(() => {
-            fetchMatches(ringNo)
+            fetchMatches(ringNo);
         }, 10000);
 
-        return () => clearInterval(interval)
+        return () => clearInterval(interval);
     }, [ringNo]);
 
     const spanStyle = {

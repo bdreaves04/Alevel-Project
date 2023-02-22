@@ -1,15 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { Card, Col, Row, Button } from "react-bootstrap";
 import AthleteDetails from "../../components/AthleteDetails";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFetchMatches } from "../../hooks/useFetchMatches";
 
 const CheckInDesk = () => {
-    const [ringOne, setRingOne] = React.useState(null);
-    const [ringTwo, setRingTwo] = React.useState(null);
-    const [ringThree, setRingThree] = React.useState(null);
     const [error, setError] = React.useState(null);
     const { user } = useAuthContext();
 
+    const {
+        ringOne,
+        ringTwo,
+        ringThree,
+        fetchMatchesOne,
+        fetchMatchesTwo,
+        fetchMatchesThree,
+    } = useFetchMatches;
 
     //sends a request to backend to change status of athlete in match to be checked in
     const checkIn = async (matchNo, athleteNo) => {
@@ -22,46 +29,15 @@ const CheckInDesk = () => {
             body: JSON.stringify({ matchNo: matchNo, athleteNo: athleteNo }),
         })
             .then((res) => res.json())
-            .then(() => {
+            .then((data) => {
+                if (!data.ok) throw Error(data.error)
+
                 fetchMatchesOne();
                 fetchMatchesTwo();
                 fetchMatchesThree();
             })
-            .catch((err) => setError(err.message));
+            .catch((err) => setError(err));
     };
-
-
-    //fetches match lists per ring
-    const fetchMatchesOne = async () => {
-        await fetch(`/api/matches/getComplete`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ringNo: 1 }),
-        })
-            .then((res) => res.json())
-            .then((data) => setRingOne(data));
-    };
-
-    const fetchMatchesTwo = async () => {
-        await fetch(`/api/matches/getComplete`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ringNo: 2 }),
-        })
-            .then((res) => res.json())
-            .then((data) => setRingTwo(data));
-    };
-
-    const fetchMatchesThree = async () => {
-        await fetch(`/api/matches/getComplete`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ringNo: 3 }),
-        })
-            .then((res) => res.json())
-            .then((data) => setRingThree(data));
-    };
-
 
     //refreshes lists of matches every 5000 ms (5s)
     React.useEffect(() => {
@@ -70,6 +46,7 @@ const CheckInDesk = () => {
         fetchMatchesTwo();
 
         const interval = setInterval(() => {
+            console.log("refresh");
             fetchMatchesOne();
             fetchMatchesThree();
             fetchMatchesTwo();
