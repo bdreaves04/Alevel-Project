@@ -15,7 +15,7 @@ const requireLoggedIn = async (req,res,next) =>{
         req.user = await User.findById({_id})
 
         if(!req.user){
-            throw Error("not an Admin")
+            throw Error("Not Logged In")
         }
         else{
             next()

@@ -38,15 +38,14 @@ const signupUser = async (req, res) => {
 const changeUsername = async (req, res) => {
     const { oldUser, newUser } = req.body;
     try {
-        const user = userModel.findOneAndUpdate(
+        const user = await userModel.findOneAndUpdate(
             { username: oldUser },
-            { $set: { username: newUser } },
+            { username: newUser },
             { new: true }
         );
-
         const token = createToken(user._id, user.isAdmin);
 
-        res.status(200).json({ username, token, isAdmin: user.isAdmin });
+        res.status(200).json({ username: user.username, token, isAdmin: user.isAdmin });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
