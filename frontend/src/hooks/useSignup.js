@@ -15,9 +15,7 @@ export const useSignup = () => {
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ username, password }),
         })
-            .then((res) => {
-                return res.json();
-            })
+            .then((res) =>  res.json())
             .then((data) => {
                 if (data.error) {
                     setIsLoading(false);

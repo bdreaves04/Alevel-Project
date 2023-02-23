@@ -9,8 +9,8 @@ router.post('/login',loginUser)
 
 router.use(requireLoggedIn)
 
-router.post("/changePassword", changeUserPassword)
+router.put("/changePassword", changeUserPassword)
 
-router.post("/changeUsername", changeUsername)
+router.put("/changeUsername", changeUsername)
 
 module.exports = router;
