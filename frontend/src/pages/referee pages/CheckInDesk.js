@@ -16,10 +16,12 @@ const CheckInDesk = () => {
         fetchMatchesOne,
         fetchMatchesTwo,
         fetchMatchesThree,
-    } = useFetchMatches;
+    } = useFetchMatches();
 
     //sends a request to backend to change status of athlete in match to be checked in
-    const checkIn = async (matchNo, athleteNo) => {
+    const checkIn = async (e, matchNo, athleteNo) => {
+        e.preventDefault();
+
         await fetch(`/api/matches/checkAthleteIn`, {
             method: "PUT",
             headers: {
@@ -30,13 +32,16 @@ const CheckInDesk = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                if (!data.ok) throw Error(data.error)
-
+                if (data.error) {
+                    setError(data);
+                }
                 fetchMatchesOne();
                 fetchMatchesTwo();
                 fetchMatchesThree();
-            })
-            .catch((err) => setError(err));
+            });
+        fetchMatchesOne();
+        fetchMatchesTwo();
+        fetchMatchesThree();
     };
 
     //refreshes lists of matches every 5000 ms (5s)
@@ -58,7 +63,7 @@ const CheckInDesk = () => {
     return (
         <Card style={{ padding: "2rem" }}>
             <Card.Title>Check In Desk</Card.Title>
-            <span>{error}</span>
+            <p style={{ color: "red" }}>{error && error.error}</p>
             <Row>
                 <Col>
                     <Card
@@ -82,8 +87,9 @@ const CheckInDesk = () => {
                                         />
                                         {!match.blueChecked && (
                                             <Button
-                                                onClick={() =>
+                                                onClick={(e) =>
                                                     checkIn(
+                                                        e,
                                                         match.matchNo,
                                                         match.athleteBlueNo
                                                     )
@@ -98,8 +104,9 @@ const CheckInDesk = () => {
                                         />
                                         {!match.redChecked && (
                                             <Button
-                                                onClick={() =>
+                                                onClick={(e) =>
                                                     checkIn(
+                                                        e,
                                                         match.matchNo,
                                                         match.athleteRedNo
                                                     )
@@ -108,7 +115,6 @@ const CheckInDesk = () => {
                                                 Check In
                                             </Button>
                                         )}
-                                        <span></span>
                                         <br />
                                     </div>
                                 ))}
@@ -136,8 +142,9 @@ const CheckInDesk = () => {
                                         />
                                         {!match.blueChecked && (
                                             <Button
-                                                onClick={() =>
+                                                onClick={(e) =>
                                                     checkIn(
+                                                        e,
                                                         match.matchNo,
                                                         match.AthleteBlueNo
                                                     )
@@ -152,8 +159,9 @@ const CheckInDesk = () => {
                                         />
                                         {!match.blueChecked && (
                                             <Button
-                                                onClick={() =>
+                                                onClick={(e) =>
                                                     checkIn(
+                                                        e,
                                                         match.matchNo,
                                                         match.AthleteRedNo
                                                     )
@@ -162,7 +170,6 @@ const CheckInDesk = () => {
                                                 Check In
                                             </Button>
                                         )}
-                                        <span></span>
                                         <br />
                                     </div>
                                 ))}
@@ -191,8 +198,9 @@ const CheckInDesk = () => {
 
                                         {!match.blueChecked && (
                                             <Button
-                                                onClick={() =>
+                                                onClick={(e) =>
                                                     checkIn(
+                                                        e,
                                                         match.matchNo,
                                                         match.AthleteBlueNo
                                                     )
@@ -217,7 +225,6 @@ const CheckInDesk = () => {
                                                 Check In
                                             </Button>
                                         )}
-                                        <span></span>
                                         <br />
                                     </div>
                                 ))}

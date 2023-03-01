@@ -1,10 +1,10 @@
 import React from "react";
 
 export const useFetchMatches = () => {
-    const [matches, setMatches] = React.useState(null);
-    const [ringOne, setRingOne] = React.useState(null);
-    const [ringTwo, setRingTwo] = React.useState(null);
-    const [ringThree, setRingThree] = React.useState(null);
+    const [matches, setMatches] = React.useState([]);
+    const [ringOne, setRingOne] = React.useState([]);
+    const [ringTwo, setRingTwo] = React.useState([]);
+    const [ringThree, setRingThree] = React.useState([]);
 
     const fetchMatches = async (ringNo) => {
         await fetch(`/api/matches/getComplete/`, {
