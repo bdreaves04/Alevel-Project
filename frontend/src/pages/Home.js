@@ -20,11 +20,12 @@ const Home = () => {
             .then((res) => res.json())
             .then((data) => {
                 setMessagesFetched(data);
+                setMessage("")
             })
     };
 
     const addMessage = async (e, msg) => {
-        e.preventDefault();
+        e.preventDefault()
         await fetch("/api/info", {
             method: "POST",
             headers: {
