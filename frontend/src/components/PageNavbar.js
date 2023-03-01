@@ -14,7 +14,7 @@ export const PageNavbar = () => {
     const { logout } = useLogout();
 
     return (
-        <Navbar bg="dark" expand="md" variant="dark" className="d-flex">
+        <Navbar bg="dark" expand="lg" variant="dark" className="d-flex">
             <Navbar.Brand>
                 <Link to="/">
                     <img
