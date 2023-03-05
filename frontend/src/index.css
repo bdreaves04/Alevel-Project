@@ -9,7 +9,7 @@ header {
 }
 
 header a {
-  color:#444;
+  color: #444;
   text-decoration: none;
 }
 
@@ -23,7 +23,7 @@ header .containerNav {
   width: 100%;
 }
 
-.navitem{
+.navitem {
   background-color: #f2f2f2;
   border-style: solid;
   border-color: #444;
@@ -32,29 +32,29 @@ header .containerNav {
   margin: 0.6vw;
 }
 
-.card{
+.card {
   margin: 0.2%;
   min-height: 90vh;
   border-color: #444;
 }
 
-.adminCards{
+.adminCards {
   min-height: 43vh;
   max-height: 43vh;
   width: 48vw;
   padding: 0.5rem;
 }
 
-.changeCard{
-    max-height: 80vh;
-    min-height: 80vh;
-    width: 48vw;
-    padding: 0.5rem;
-
+.changeCard {
+  max-height: 80vh;
+  min-height: 80vh;
+  max-width: 48vw;
+  min-width: 48vw;
+  padding: 0.5rem;
 }
 
-@media (max-width: 1300px) {
-  .adminCards{
+@media (max-width: 990px) {
+  .adminCards {
     min-height: 40vh;
     max-height: 50vh;
     width: 80vw;
@@ -62,15 +62,16 @@ header .containerNav {
     padding: 0.5rem;
   }
 
-  .changeCard{
-    width: 92vw;
-    min-height: 40vh;
-    max-height: 40vh;
+  .changeCard {
+    max-width: 60vw;
+    min-width: 60vw;
+    min-height: 37vh;
+    max-height: 37vh;
     padding: 0.5rem;
   }
 }
 
-.nextMatchesPage{
+.nextMatchesPage {
   padding: 0.5rem;
   max-height: 90vh;
 }
