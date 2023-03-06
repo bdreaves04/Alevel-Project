@@ -5,7 +5,7 @@ header {
 .App {
   padding: 2px;
   background-color: #212529;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 header a {
@@ -36,32 +36,32 @@ header .containerNav {
   margin: 0.2%;
   min-height: 90vh;
   border-color: #444;
+  padding: 0.5rem;
 }
 
-.adminCards {
-  min-height: 43vh;
-  max-height: 43vh;
-  width: 48vw;
-  padding: 0.5rem;
+.adminPage {
+  padding: 1rem;
+  margin-inline: auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(48vw, 1fr));
+  min-height: 91vh;
+}
+
+.adminPage > .card {
+  min-height: 40vh;
 }
 
 .changeCard {
-  max-height: 80vh;
-  min-height: 80vh;
+  max-height: 70vh;
+  min-height: 70vh;
   max-width: 48vw;
   min-width: 48vw;
   padding: 0.5rem;
+  margin: auto;
 }
 
 @media (max-width: 990px) {
-  .adminCards {
-    min-height: 40vh;
-    max-height: 50vh;
-    width: 80vw;
-    margin-left: 10vw;
-    padding: 0.5rem;
-  }
-
   .changeCard {
     max-width: 60vw;
     min-width: 60vw;

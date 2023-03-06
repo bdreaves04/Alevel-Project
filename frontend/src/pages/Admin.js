@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 import CreateMatchCard from "../components/AdminPage/CreateMatchCard";
 import UpdateMatchCard from "../components/AdminPage/UpdateMatchCard";
@@ -8,32 +8,20 @@ import UpdateAthleteCard from "../components/AdminPage/UpdateAthleteCard";
 
 const Admin = () => {
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Card className="adminCards overflow-auto">
-            <CreateMatchCard />
-          </Card>
-        </Col>
-        <Col>
-          <Card className="adminCards overflow-auto">
-            <CreateAthleteCard />
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Card className="adminCards overflow-auto">
-            <UpdateMatchCard />
-          </Card>
-        </Col>
-        <Col>
-          <Card className="adminCards overflow-auto">
-            <UpdateAthleteCard />
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <div className="adminPage">
+      <Card className="adminCards overflow-auto">
+        <CreateMatchCard />
+      </Card>
+      <Card className="adminCards overflow-auto">
+        <UpdateMatchCard />
+      </Card>
+      <Card className="adminCards overflow-auto">
+        <CreateAthleteCard />
+      </Card>
+      <Card className="adminCards overflow-auto">
+        <UpdateAthleteCard />
+      </Card>
+    </div>
   );
 };
 
