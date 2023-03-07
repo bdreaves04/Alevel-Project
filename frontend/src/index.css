@@ -5,7 +5,7 @@ header {
 .App {
   padding: 2px;
   background-color: #212529;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 header a {
@@ -44,8 +44,13 @@ header .containerNav {
   margin-inline: auto;
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(48vw, 1fr));
-  min-height: 91vh;
+  grid-template-columns: repeat(2, minmax(29rem, 1fr));
+  min-height: 89.5vh;
+
+  background: white;
+  border-color: #444;
+  border-radius: 0.375rem;
+  margin: 0.2%;
 }
 
 .adminPage > .card {
@@ -68,6 +73,10 @@ header .containerNav {
     min-height: 37vh;
     max-height: 37vh;
     padding: 0.5rem;
+  }
+
+  .adminPage {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
