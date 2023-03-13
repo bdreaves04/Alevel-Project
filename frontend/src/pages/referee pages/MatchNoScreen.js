@@ -18,7 +18,7 @@ const MatchNoScreen = () => {
 
   const spanStyle = {
     color: "white",
-    fontSize: "55vw",
+    fontSize: "50rem",
   };
 
   return (
@@ -36,14 +36,17 @@ const MatchNoScreen = () => {
       <div
         style={{
           minHeight: "100vh",
-          minWidth: "100vw",
+          minWidth: "100%",
           backgroundColor: "black",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         {matches[0] && (
-          <span key={matches[0].matchNo} style={spanStyle}>
+          <div key={matches[0].matchNo} style={spanStyle}>
             {matches[0].matchNo}
-          </span>
+          </div>
         )}
       </div>
     </>
