@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 
-import Navbar from "react-bootstrap/Navbar";
+import { Navbar, Nav } from "react-bootstrap";
 
 const styles = {
   color: "#f5f5f5",
@@ -14,66 +14,78 @@ export const PageNavbar = () => {
   const { logout } = useLogout();
 
   return (
-    <Navbar bg="dark" expand="lg" variant="dark" className="d-flex">
+    <Navbar
+      collapseOnSelect
+      bg="dark"
+      expand="lg"
+      variant="dark"
+      className="d-flex"
+    >
       <Navbar.Brand>
-        <Link to="/">
+        <Nav.Link eventKey={2} as={Link} to="/">
           <img
             src="./logo.svg"
             alt="logo"
             width="57vh"
             className="d-inline-block align-top"
           />
-        </Link>
+        </Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle
         aria-controls="responsive-navbar-nav-md"
         style={{ marginRight: "0.5rem" }}
       />
-      <Navbar.Collapse>
+      <Navbar.Collapse id="navCollapse">
+        {" "}
         <Navbar.Brand style={{ marginRight: "2rem" }}>
-          <Link to="/" style={styles}>
+          <Nav.Link eventKey={2} as={Link} to="/" style={styles}>
             <h2>Home</h2>
-          </Link>
+          </Nav.Link>
         </Navbar.Brand>
         <Navbar.Brand style={{ marginRight: "2rem" }}>
-          <Link to="/nextMatches" style={styles}>
+          <Nav.Link as={Link} eventKey={2} to="/nextMatches" style={styles}>
             <h2>Next Matches</h2>
-          </Link>
+          </Nav.Link>
         </Navbar.Brand>
         {!user && (
           <>
             <Navbar.Brand className="ms-auto" style={{ marginRight: "2rem" }}>
-              <Link to="/login" style={styles}>
+              <Nav.Link as={Link} eventKey={2} to="/login" style={styles}>
                 <h2>Login</h2>
-              </Link>
+              </Nav.Link>
             </Navbar.Brand>
             <Navbar.Brand>
-              <Link to="/signup" style={styles}>
+              <Nav.Link as={Link} eventKey={2} to="/signup" style={styles}>
                 <h2>Signup</h2>
-              </Link>
+              </Nav.Link>
             </Navbar.Brand>
           </>
         )}
         {user && user.isAdmin && (
           <>
             <Navbar.Brand style={{ marginRight: "2rem" }}>
-              <Link to="/admin" style={styles}>
+              <Nav.Link as={Link} eventKey={2} to="/admin" style={styles}>
                 <h2>Admin</h2>
-              </Link>
+              </Nav.Link>
             </Navbar.Brand>
             <Navbar.Brand style={{ marginRight: "2rem" }}>
-              <Link to="/refereeContents" style={styles}>
+              <Nav.Link
+                as={Link}
+                eventKey={2}
+                to="/refereeContents"
+                style={styles}
+              >
                 <h2>Referee Pages</h2>
-              </Link>
+              </Nav.Link>
             </Navbar.Brand>
           </>
         )}
         {user && (
           <>
             <Navbar.Brand className="ms-auto">
-              <Link to="/profile" style={styles}>
+              <Nav.Link as={Link} eventKey={2} to="/profile" style={styles}>
                 <h2>Profile</h2>
-              </Link>
+              </Nav.Link>
             </Navbar.Brand>
             <Navbar.Brand>
               <button
