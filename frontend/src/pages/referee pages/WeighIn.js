@@ -4,6 +4,7 @@ import AthleteDetails from "../../components/AthleteDetails";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 export const WeighIn = () => {
+  document.title = "weigh in dashboard";
   const [athletes, setAthletes] = React.useState(null);
   const [error, setError] = React.useState(null);
   const { user } = useAuthContext();

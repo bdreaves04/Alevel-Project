@@ -6,6 +6,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFetchMatches } from "../../hooks/useFetchMatches";
 
 const CheckInDesk = () => {
+  document.title = "check in desk";
   const [error, setError] = React.useState(null);
   const { user } = useAuthContext();
 

@@ -7,6 +7,7 @@ import CreateAthleteCard from "../components/AdminPage/CreateAthleteCard";
 import UpdateAthleteCard from "../components/AdminPage/UpdateAthleteCard";
 
 const Admin = () => {
+  document.title = "admin page";
   return (
     <div className="adminPage">
       <Card className="adminCards overflow-auto">

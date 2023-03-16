@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import { useFetchMatches } from "../../hooks/useFetchMatches";
 
 const MatchNoScreen = () => {
+  document.title = "RingNo Screen";
   const [ringNo, setRingNo] = React.useState(1);
   const { matches, fetchMatches } = useFetchMatches();
 
