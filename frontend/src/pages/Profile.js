@@ -12,6 +12,7 @@ export const Profile = () => {
 };
 
 const SmallDevice = () => {
+  document.title = "profile page";
   const { user } = useAuthContext();
   return (
     <Card style={{ padding: "0.5rem", height: "90vh" }}>
