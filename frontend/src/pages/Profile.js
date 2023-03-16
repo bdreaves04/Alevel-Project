@@ -6,13 +6,13 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useViewport } from "../hooks/useViewport";
 
 export const Profile = () => {
+  document.title = "profile page";
   const { width, height } = useViewport();
 
   return width <= 1000 ? <SmallDevice /> : <LargeDevice />;
 };
 
 const SmallDevice = () => {
-  document.title = "profile page";
   const { user } = useAuthContext();
   return (
     <Card style={{ padding: "0.5rem", height: "90vh" }}>
