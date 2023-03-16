@@ -20,7 +20,7 @@ const SmallDevice = () => {
 
       <div className="mx-auto" style={{ width: "85vw" }}>
         <Row>
-          <ChangeUsername />
+          <ChangeUsername className="h-75" />
         </Row>
         <div style={{ height: "1.5vh" }} />
         <Row>
