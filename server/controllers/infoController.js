@@ -22,11 +22,11 @@ const deleteMsg = async (req, res) => {
     return res.status(400).json({ error: "not a valid workout id" });
   }
 
-  const workout = await InfoModel.findByIdAndDelete(id).catch((err) => {
+  const message = await InfoModel.findByIdAndDelete(id).catch((err) => {
     res.status(404).json({ error: "message not found" });
   });
 
-  res.status(200).json(workout);
+  res.status(200).json(message);
 };
 
 module.exports = {
