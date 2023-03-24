@@ -18,6 +18,7 @@ app.use("/api/matches", matchRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/info", infoRoutes);
 
+console.log(process.env.MONGO_URI);
 //connect to db
 mongoose
   .connect(process.env.MONGO_URI)
