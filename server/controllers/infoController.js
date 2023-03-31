@@ -18,11 +18,12 @@ const sendHomeMsg = async (req, res) => {
 const deleteMsg = async (req, res) => {
   const { id } = req.params;
 
+  // checking if the id entered for the message is a valid id type before sending the delete request
   if (!mongoose.isValidObjectId(id)) {
     return res.status(400).json({ error: "not a valid workout id" });
   }
 
-  const message = await InfoModel.findByIdAndDelete(id).catch((err) => {
+  const message = await InfoModel.findByIdAndDelete(id).catch(() => {
     res.status(404).json({ error: "message not found" });
   });
 

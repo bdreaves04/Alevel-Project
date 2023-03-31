@@ -10,6 +10,7 @@ export const useChangePassword = () => {
     setIsLoading(true);
     setError(null);
 
+    // sends a request to change the users password and changes local storage if the request is successfull
     await fetch("/api/user/changePassword", {
       method: "PUT",
       headers: {

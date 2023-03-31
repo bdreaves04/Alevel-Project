@@ -7,11 +7,12 @@ import { useViewport } from "../hooks/useViewport";
 
 export const Profile = () => {
   document.title = "profile page";
-  const { width, height } = useViewport();
+  const { width } = useViewport();
 
   return width <= 1000 ? <SmallDevice /> : <LargeDevice />;
 };
 
+// changes layout depending on the dimentions of the device
 const SmallDevice = () => {
   const { user } = useAuthContext();
   return (

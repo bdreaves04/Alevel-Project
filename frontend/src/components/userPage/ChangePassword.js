@@ -3,6 +3,7 @@ import { Card, Form, Button } from "react-bootstrap";
 import { useChangePassword } from "../../hooks/useChangePassword";
 
 const ChangePassword = () => {
+  // stores functions and state variables in a hook
   const { changePassword, isLoading, error } = useChangePassword();
   const [username, setUsername] = React.useState("");
   const [passwordOld, setOldPassword] = React.useState("");

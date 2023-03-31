@@ -10,6 +10,7 @@ export const ViewportProvider = ({ children }) => {
     setHeight(window.innerHeight);
   };
 
+  //  changes values of window dimention variables when window changes dimentions
   React.useEffect(() => {
     window.addEventListener("resize", handleWindowResize);
     return () => window.removeEventListener("resize", handleWindowResize);

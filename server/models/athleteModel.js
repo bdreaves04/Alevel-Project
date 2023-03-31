@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+// defines how athletes need to be defined in the database
 const athleteSchema = new Schema(
   {
     forename: {
@@ -33,4 +34,4 @@ const athleteSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Athlete', athleteSchema)
+module.exports = mongoose.model("Athlete", athleteSchema);

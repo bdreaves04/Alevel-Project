@@ -6,14 +6,16 @@ import AthleteDetails from "./AthleteDetails";
 const MatchDetails = (props) => {
   const { matches, fetchMatches } = useFetchMatches();
 
-  //refreshing matches list on load every 10 seconds
+  //refreshing matches list on load
   React.useEffect(() => {
     fetchMatches(props.ringNo);
   }, []);
+  // refreshes list when props change
   React.useEffect(() => {
     fetchMatches(props.ringNo);
   }, [props]);
 
+  //refreshes list every 10 seconds
   React.useEffect(() => {
     const interval = setInterval(async () => {
       await fetchMatches(props.ringNo);

@@ -76,15 +76,16 @@ const madeWeight = async (req, res) => {
   }
 };
 
-const getAthleteFromNo = async (req,res)=>{
-  const {athleteNo} = req.body;
-  const athlete = await Athlete.findOne({athleteNo: athleteNo})
+const getAthleteFromNo = async (req, res) => {
+  // destructure athleteNo from body of request then use mongoose findOne function to find a match in the database
+  const { athleteNo } = req.body;
+  const athlete = await Athlete.findOne({ athleteNo: athleteNo });
 
-  if(!athlete){
+  if (!athlete) {
     return res.status(404).json({ error: "no such athlete" });
   }
-  return res.status(200).json(athlete)
-}
+  return res.status(200).json(athlete);
+};
 
 //exporting functions
 
@@ -95,5 +96,5 @@ module.exports = {
   getAthleteBySurname,
   updateAthlete,
   madeWeight,
-  getAthleteFromNo
+  getAthleteFromNo,
 };

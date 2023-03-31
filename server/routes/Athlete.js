@@ -7,10 +7,9 @@ const {
   getAthleteBySurname,
   updateAthlete,
   madeWeight,
-  getAthleteFromNo
+  getAthleteFromNo,
 } = require("../controllers/athletesController");
 const requireAuth = require("../middleware/requireAuth");
-
 
 //get all athletes
 router.get("/", getAthletes);
@@ -23,13 +22,13 @@ router.get("/getbyid/:id", getAthleteFromId);
 
 router.post("/getByAthleteNo", getAthleteFromNo);
 
-router.use(requireAuth)
+router.use(requireAuth);
 
 //add new athlete data
 router.post("/", createAthlete);
 
 //api for making weight button
-router.put("/madeWeight/:id", madeWeight)
+router.put("/madeWeight/:id", madeWeight);
 
 //update athlete data
 router.put("/:id", updateAthlete);

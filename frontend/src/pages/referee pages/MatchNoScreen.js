@@ -8,6 +8,7 @@ const MatchNoScreen = () => {
   const [ringNo, setRingNo] = React.useState(1);
   const { matches, fetchMatches } = useFetchMatches();
 
+  // refreshes match list every 10 seconds
   React.useEffect(() => {
     fetchMatches(ringNo);
     const interval = setInterval(() => {
@@ -44,6 +45,7 @@ const MatchNoScreen = () => {
           justifyContent: "center",
         }}
       >
+        {/* displays only the first irem in the list to get the next match */}
         {matches[0] && (
           <div key={matches[0].matchNo} style={spanStyle}>
             {matches[0].matchNo}
