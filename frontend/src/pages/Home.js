@@ -9,6 +9,7 @@ const Home = () => {
   const [messagesFetched, setMessagesFetched] = React.useState([]);
   const [error, setError] = React.useState("");
 
+  // function which fetches messages when the page first loads
   const fetchMessages = async () => {
     console.log("fetched messages");
     await fetch("/api/info", {
@@ -24,6 +25,7 @@ const Home = () => {
       });
   };
 
+  //function which refreshes the message list
   const refreshMessages = async () => {
     console.log("fetched messages");
     await fetch("/api/info", {
@@ -37,6 +39,9 @@ const Home = () => {
         setMessagesFetched(data);
       });
   };
+
+  //sends a request the the backend server with a json body containing the message 
+  //entered by the user and the authorisation token to identify that the user is an admin
 
   const addMessage = async (e, msg) => {
     e.preventDefault();
@@ -57,6 +62,7 @@ const Home = () => {
     await fetchMessages();
   };
 
+  //sends a delete request to the backend server to delete the message with the id inputted into the function
   const deleteMessage = async (e, id) => {
     e.preventDefault();
     await fetch("/api/info/" + id, {
@@ -71,6 +77,10 @@ const Home = () => {
     await fetchMessages();
   };
 
+  // fetches array of messages every 10 seconds incase there has been a change
+  //
+  //counld change database to only send data if there has been an update but would requre more logic but would also 
+  //network usage and would increase performance of system
   React.useEffect(() => {
     const interval = setInterval(() => {
       refreshMessages();
@@ -78,6 +88,7 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [messagesFetched]);
 
+  //fecthes array of messages when the page loads
   React.useEffect(() => {
     fetchMessages();
   }, []);
@@ -88,7 +99,7 @@ const Home = () => {
         <Card.Body>
           <Card.Title>Home Page</Card.Title>
           <Card.Text style={{ color: "red" }}>{error}</Card.Text>
-          {user.isAdmin && (
+          {user.isAdmin && (  //only diplays if the user is an admin
             <Form>
               <Form.Group>
                 <Form.Label>Enter Message to display on homepage</Form.Label>
@@ -106,6 +117,7 @@ const Home = () => {
           )}
           <br />
           <div>
+            {/* maps over each message in fetched array displaying the messsage field and a delete icon if the user is an admin */}
             {messagesFetched &&
               messagesFetched.map((message) => (
                 <div className="messageItem" key={message._id}>
