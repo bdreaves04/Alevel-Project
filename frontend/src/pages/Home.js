@@ -5,7 +5,10 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const Home = () => {
   document.title = "Home";
   const { user } = useAuthContext();
+  // stores message to be sent in request to the backend
   const [message, setMessage] = React.useState("");
+
+  //array of messages that has been fetched from database
   const [messagesFetched, setMessagesFetched] = React.useState([]);
   const [error, setError] = React.useState("");
 
