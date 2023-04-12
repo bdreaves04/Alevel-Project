@@ -1,5 +1,6 @@
 import { createContext, useReducer, useEffect } from "react";
 
+//creates a React.context which allows for others to access context information
 export const AuthContext = createContext();
 
 export const authReducer = (state, action) => {
@@ -16,6 +17,7 @@ export const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
+    // sets default state of user to be null
     user: null,
   });
   console.log("AuthContext State:", state);
@@ -29,6 +31,7 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, []);
 
+  // surrounds any components inside the tags in the context provider meaning it can be accessed from any of its children
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
       {children}

@@ -28,6 +28,7 @@ const signupUser = async (req, res) => {
 
     //creating token for user when signing up
     const token = createToken(user._id, false);
+    // makes isAdmin property false since we dont want new users to be an admin
     const isAdmin = false;
 
     res.status(200).json({ username, token, isAdmin });

@@ -8,6 +8,7 @@ const createAthlete = async (req, res) => {
     const athlete = await Athlete.create(req.body);
     res.status(200).json(athlete);
   } catch (error) {
+    //TODO change error message to be more clear to user if the athlete with id already exists
     res.status(400).json({ error: error.message });
   }
 };
@@ -81,6 +82,7 @@ const getAthleteFromNo = async (req, res) => {
   const { athleteNo } = req.body;
   const athlete = await Athlete.findOne({ athleteNo: athleteNo });
 
+  // if the athlete object retrieved is null then return a response with error status 404 that the athlete isnt found
   if (!athlete) {
     return res.status(404).json({ error: "no such athlete" });
   }
